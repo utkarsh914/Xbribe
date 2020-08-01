@@ -146,6 +146,35 @@ router.get('/me', userAuth, async (req, res) => {
 
 
 
+// to fetch nearby cases
+router.post('/fetchNearbyCases', userAuth, (req, res) => {
+  const longitude = parseFloat(req.body.longitude)
+  const latitude = parseFloat(req.body.latitude)
+  const radius = parseInt(req.body.radius)
+  Case.find({
+    coordinates: {
+      $near: {
+        $maxDistance: radius || 1000, //in meters
+        $geometry: {
+          type: "Point",
+          coordinates: [longitude, latitude] //longi, lati
+        }
+      }
+    }
+  })
+  .then(cases => {
+    res.send(cases)
+  })
+  .catch(e => {
+    console.log('Error: ', e.message )
+    res.status(400).send('Error fetching nearby cases')
+  })
+})
+
+
+
+
+
 // // for notifications if db changes or updates
 // router.post('/caseStatus', auth, (req, res) => {
 //   Case.findOne({ userId: req.user.id , caseId: req.body.caseId })
