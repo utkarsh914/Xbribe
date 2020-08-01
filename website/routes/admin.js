@@ -130,6 +130,87 @@ router.get('/cases/case', adminAuth, (req, res) => {
 
 
 
+// MODIFY CASE PROGRESS AND OTHER DETAILS
+router.get('/manage/case', adminAuth, async (req, res) => {
+  const id = req.query.id
+  if (!id) return res.send('Bad Request!')
+
+  try {
+    const update = {}
+    const notif = {
+      title: "Case status updated",
+      body: ''
+    }
+  
+    const mailOptions = {
+      from: process.env.NODEMAILER_EMAIL,
+      to: '',
+      subject: 'XBribe: Case status updated',
+      html: ``
+    }
+  
+    if (req.query.priority) {
+      update.priority = req.query.priority
+      mailOptions.subject = 'XBribe: Case priority updated',
+      mailOptions.html = `<b>Your case with case ID ${id} has been assigned priority ${req.query.priority}</b>`
+    }
+    // if (req.query.folder) update.folder = req.query.folder
+  
+    if (req.query.status) {
+      update.status = req.query.status
+  
+      notif.body = `Your case with case ID ${id} has been ${req.query.status}`
+      mailOptions.subject = 'XBribe: Case status updated'
+      mailOptions.html = `<b>Your case with case ID ${id} has been ${req.query.status}</b>`
+      
+      if (req.query.status === 'resolved') {
+        update.resolvedAt = new Date()
+  
+        mailOptions.subject = `XBribe: Case Resolved!`
+  
+        // store into daily stats for chart purpose
+        const currentDate = new Date(new Date().setHours(0, 0, 0, 0)).getTime()
+        const stats = await DailyStats.findOne({ date: currentDate })
+        if (!stats) {
+          await new DailyStats({
+            date: currentDate,
+            received: 0,
+            resolved: 1
+          }).save()
+        } else {
+          await DailyStats.findOneAndUpdate({ date: currentDate }, { $inc: { resolved: 1 } }, {new: true })
+        }
+      }
+    }
+  
+    const updatedCase = await Case.findOneAndUpdate({ caseId: id }, update, { new: true }).populate('userId')
+    //send mail    
+    mailOptions.to = updatedCase.email
+    transporter.sendMail( mailOptions, (error, info) => {
+      if (error) console.log(error)
+      else console.log('Email sent: ' + info.response)
+    })
+  
+    //send progress change notification
+    const fcmToken = updatedCase.userId.fcmToken
+    if (fcmToken) {
+      const fcmResponse = await helpers.sendFCM(notif, null, fcmToken, 'data')
+      console.log(fcmResponse)
+    }
+    else console.log(`Can't send a notification, no FCM TOKEN exists`)
+
+    res.redirect(`/admin/cases/case?id=${id}`)
+  }
+  catch (e) {
+    console.log(e)
+    res.redirect(`/admin/cases/case?id=${id}`)
+  }
+  
+})
+
+
+
+
 // for faker
 router.get('/manage-database', adminAuth, (req, res) => {
   res.redirect('/faker')
