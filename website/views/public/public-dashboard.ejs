@@ -12,7 +12,7 @@
  
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/table-public.css">
+    <link rel="stylesheet" type="text/css" href="/css/table-dashboard.css">
   </head>
   <body>
 
@@ -140,7 +140,7 @@
 
 				<div class="heading-section xbribe-animate row mb-3 mt-0 pt-0">
           <div class="col-md-6">
-            <h2 class="mb-2">Recently Registered Complaints</h2>
+            <h2 class="mb-2">Recently Registered Complaints</h2> 
 					  <p>Below are some newly registered complaints arranged in tabular form</p>
           </div>
           <div class="col-md-6">
@@ -155,8 +155,10 @@
           </div>
 				</div>
 
+        
+
         <% if (error) { %>
-          <div class="alert alert-danger xbribe-animate mb-0"><strong><%= message %></strong></div>
+          <div class="alert alert-danger xbribe-animate mb-2"><strong><%= message %></strong></div>
         <% }else {%>
   
           <div id="posts">
@@ -164,50 +166,59 @@
             <div class="alert alert-success alert-dismissible fade show xbribe-animate mb-0">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
               <%= message %>
-            </div>
+						</div>
+						
+						<div class="wrap-table100 xbribe-animate mt-3">
+							<div class="table100 ver1 m-b-110">
+								<table data-vertable="ver1">
+									<thead>
+										<tr class="row100 head">
+                      <th class="column100 column0" data-column="column0">S No.</th>
+                      <th class="column100 column1" data-column="column1">Ministry</th>
+											<th class="column100 column2" data-column="column2">Department</th>
+											<th class="column100 column3" data-column="column3">Date</th>
+											<th class="column100 column4" data-column="column4">Place</th>
+											<th class="column100 column5" data-column="column5">Status</th>
+											<th class="column100 column6" data-column="column6">Resolve Date</th>
+										</tr>
+									</thead>
+									<tbody>
 
+										<!-- loop over all cases and render them -->
+										<% if (posts) { %>
+											<% var n = (pageNo===1) ? 1 : ((pageNo-1)*pageSize+1)  %>
+											<% for (var i=0; i < posts.length; i++) { %>
+												<% var post = posts[i] %>
+											
+												<tr class="row100">
+                          <td class="column100 column0" data-column="column0"> <%= n %> </td>
+                          <td class="column100 column1" data-column="column1"> <%= ministries[post.ministryId] || 'Not Specified' %> </td>
+													<td class="column100 column2" data-column="column2"> <%= post.department || 'Not Specified' %> </td>
+													<td class="column100 column3" data-column="column3"> <%= post.date.toLocaleString() %> </td>
+													<td class="column100 column4" data-column="column4"> <%= post.place %> </td>
+													<td class="column100 column5" data-column="column5"> <b><%= post.status %></b> </td>
+													<% if (post.resolvedAt) { %>
+														<td class="column100 column6" data-column="column6"> <%= post.resolvedAt.toLocaleString() %> </td>
+													<% } else { %>
+														<td class="column100 column6" data-column="column6"> -- </td>
+													<% } %>
+												</tr>
 
-            <div class="container-table100 xbribe-animate">
-              <div class="wrap-table100">
-                <div class="table">
-    
-                  <div class="row table-row header">
-                    <div class="cell"> Sr No </div>
-                    <div class="cell"> Department </div>
-                    <div class="cell"> Date </div>
-                    <div class="cell"> Place </div>
-                  </div>
-                  
-                  <!-- loop over all cases and render them -->
-                  <% var n = (pageNo===1) ? 1 : ((pageNo-1)*pageSize+1)  %>
-                  <% if (posts && ministries) { posts.forEach((post) => { %>
-        
-                    <div class="row table-row">
-                      <div class="cell" data-title="Serial No.">
-                        <%= n %>
-                      </div>
-                      <div class="cell" data-title="Department">
-                        <%= post.department || 'Not Specified' %>
-                      </div>
-                      <div class="cell" data-title="Date">
-                        <%= post.date.toLocaleString() %>
-                      </div>
-                      <div class="cell" data-title="Place">
-                        <%= post.place %>
-                      </div>
-                    </div>
-                    <% n=n+1 %>
-
-                  <% })} else { %>
-                    <div class="alert alert-danger mb-2">There was some error</div>
-                  <% } %>
-    
-                </div>
-              </div>
-            </div>
+											<% n=n+1 %>
+										<% }} else { %>
+											<div class="alert alert-danger mb-2">There was some error</div>
+										<% } %>
+			
+									</tbody>
+								</table>
+							</div>
+							
+						</div>
             
           </div>
         <% } %>
+
+
 
         <%- include('../partials/pagination') %>
 
