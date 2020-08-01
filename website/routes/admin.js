@@ -219,18 +219,18 @@ router.get('/manage-database', adminAuth, (req, res) => {
 
 
 
-// generate case data archive and send the link
-router.post('/savefcmtoken', async (req, res) => {
-  const fcmToken = req.body.fcmToken
-  console.log('Received token: ', fcmToken)
-  const admin = await Admin.findOne({ adminId: 'admin' })
-  if (admin) {
-    admin.fcmToken = fcmToken
-    await admin.save()
-    console.log('Saved token')
-    res.status(200).send('Token Saved')
-  }
-})
+// // generate case data archive and send the link
+// router.post('/savefcmtoken', async (req, res) => {
+//   const fcmToken = req.body.fcmToken
+//   console.log('Received token: ', fcmToken)
+//   const admin = await Admin.findOne({ adminId: 'admin' })
+//   if (admin) {
+//     admin.fcmToken = fcmToken
+//     await admin.save()
+//     console.log('Saved token')
+//     res.status(200).send('Token Saved')
+//   }
+// })
 
 
 
