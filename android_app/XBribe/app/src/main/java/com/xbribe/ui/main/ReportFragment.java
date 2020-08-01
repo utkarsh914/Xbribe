@@ -31,6 +31,7 @@ import com.xbribe.R;
 import com.xbribe.data.AppDataManager;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.function.SubmissionActivity;
+import com.xbribe.ui.main.drawers.checkcase.CheckcaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,8 +56,8 @@ public class ReportFragment extends Fragment {
 
     private ReportViewModel reportViewModel;
     private AppDataManager appDataManager;
-   /* private CheckcaseFragment checkcaseFragment;
-    private NotificationFragment notificationFragment;
+    private CheckcaseFragment checkcaseFragment;
+    /*private NotificationFragment notificationFragment;
     private SecretFragment secretFragment;*/
 
     @Nullable
@@ -97,6 +98,16 @@ public class ReportFragment extends Fragment {
             startActivity(new Intent(getActivity(), SubmissionActivity.class));
     }
 
+    @OnClick(R.id.check_cases)
+    void checkCases()
+    {
+        checkcaseFragment = new CheckcaseFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_frame,checkcaseFragment)
+                .addToBackStack("Report")
+                .commit();
+    }
+
     private void initSlider()
     {
         SliderAdapter adapter = new SliderAdapter(getActivity());
@@ -106,7 +117,7 @@ public class ReportFragment extends Fragment {
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
         sliderView.setIndicatorSelectedColor(Color.WHITE);
         sliderView.setIndicatorUnselectedColor(Color.GRAY);
-        sliderView.setScrollTimeInSec(3);
+        sliderView.setScrollTimeInSec(5);
         sliderView.startAutoCycle();
     }
 }

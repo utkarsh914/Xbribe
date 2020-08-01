@@ -196,6 +196,7 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_image_files_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 0"
@@ -212,6 +213,7 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_audio_files_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_image_files"
@@ -229,6 +231,7 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_video_files_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" 0"

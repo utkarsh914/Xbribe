@@ -11,6 +11,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -68,8 +69,6 @@ public class Step_two_Fragment  extends Fragment
     private AppDataManager appDataManager;
     private OTPVerifyFragment otpVerifyFragment;
 
-    //private DatabaseHelper databaseHelper;
-
     @BindView(R.id.pb_progress)
     ProgressBar pbProgress;
 
@@ -93,6 +92,15 @@ public class Step_two_Fragment  extends Fragment
 
     @BindView(R.id.btn_submit)
     Button submit;
+
+    @BindView(R.id.tv_image_files_no)
+    TextView tvImgNo;
+
+    @BindView(R.id.tv_audio_files_no)
+    TextView tvAudNo;
+
+    @BindView(R.id.tv_video_files_no)
+    TextView tvVidNo;
 
     ImagePreviewAdapter imagePreviewAdapter;
     SubmissionActivityViewModel submissionActivityViewModel;
@@ -254,6 +262,10 @@ public class Step_two_Fragment  extends Fragment
                 }
             }
         }
+
+        tvImgNo.setText(String.valueOf(imageList.size()));
+        tvAudNo.setText(String.valueOf(audioList.size()));
+        tvVidNo.setText(String.valueOf(videoList.size()));
 
         imagepreview=new ArrayList<>();
         for(int i=0;i<imageList.size();i++)
