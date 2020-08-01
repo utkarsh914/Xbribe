@@ -107,8 +107,10 @@ router.post('/status', async (req, res) => {
   }
 })
 
-
-
+// display reminder form
+router.get('/remind', (req, res) => {
+  res.render('public/remind')
+})
 
 
 
