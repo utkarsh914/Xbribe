@@ -112,6 +112,57 @@ router.get('/remind', (req, res) => {
   res.render('public/remind')
 })
 
+// remind admin for action
+router.post('/remind', async (req, res) => {
+  const { caseId, email } = req.body
+  if ( !caseId || !email ) return res.status(400).send('Provide both caseID and email')
+
+  try {
+    const c = await Case.findOne({ caseId, email })
+    if (!c) {
+      req.flash('error_message', 'Case not found!')
+      return res.redirect('/remind')
+    }
+    if (c.remindedAt) {
+      const difference = ((new Date()).getTime() - c.remindedAt.getTime()) / (24*3600*1000)
+      if (difference < 14) {
+        req.flash('error_message', 'You can send a reminder at intervals of 14 days only.')
+        return res.redirect('/remind')
+      }
+    }
+    c.remindedAt = new Date()
+    await c.save()
+    req.flash('success_message', 'A reminder was sent regarding your case.')
+    res.redirect('/remind')
+
+    //send notif to Admin web portal
+    const adminFcmToken = (await Admin.findOne({ adminId: 'admin' })).fcmToken
+    if (adminFcmToken) {
+      helpers.sendFCM({
+        title: `New reminder for ${caseId}`,
+        body: `Dep: ${c.department}\nPlace: ${c.place}, ${c.date.toLocaleDateString()}`,
+        click_action: `/admin/cases/case?id=${caseId}`,
+        icon: "/images/Xbribe_logo.png"
+      },
+      {
+        case: JSON.stringify(c)
+      },
+      adminFcmToken, 'notification')
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => console.log(`Can't send notification to ADMIN: `, err))
+    }
+    else console.log(`Can't send notification to ADMIN, no FCM TOKEN exists`)
+  }
+  catch (e) {
+    console.log(e)
+    req.flash('error_message', `Couldn't send a reminder due to some problem on server side.`)
+    res.redirect('/remind')
+  }
+})
+
+
 
 
 // endpoint to send data for drawing the chart on public portal
