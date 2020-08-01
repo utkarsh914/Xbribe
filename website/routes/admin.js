@@ -211,6 +211,64 @@ router.get('/manage/case', adminAuth, async (req, res) => {
 
 
 
+// send message to user from ministry
+router.post('/manage/case/messages', adminAuth, async (req, res) => {
+  const { caseId, title, message } = req.body
+
+  if (!(caseId && title && message)) {
+    return res.redirect(`/admin/dashboard`)
+  }
+
+  try {
+    const msg = {
+      title: title,
+      message: message,
+      date: new Date()
+    }
+    const notif = {
+      title: `Message: ${title}`,
+      body: message
+    }
+  
+    const updatedCase = await Case.findOneAndUpdate({ caseId: caseId }, { $push: { notifications: msg } }, { new: true }).populate('userId')
+    
+    //send mail
+    var mailOptions = {
+      from: process.env.NODEMAILER_EMAIL,
+      to: updatedCase.email,
+      subject: 'XBribe: You have a new message',
+      html: `<p>Hello! You have a new message for <b>${caseId}</b></p>
+            <p><b>Title: </b>${title}</p>
+            <p><b>Message: </b>${message}</p>
+            <p><b>Dated: </b>${(new Date()).toLocaleString()}</p>
+          `
+    }
+  
+    transporter.sendMail( mailOptions, (error, info) => {
+      if (error) console.log(error)
+      else console.log('Email sent: ' + info.response)
+    })
+  
+    //send notification of message
+    const fcmToken = updatedCase.userId.fcmToken
+    if (fcmToken) {
+      const fcmResponse = await helpers.sendFCM(notif, null, updatedCase.userId.fcmToken, 'data')
+      console.log(fcmResponse)
+    }
+    else console.log(`Can't send a notification, no FCM TOKEN exists`)
+  
+    res.redirect(`/admin/cases/case?id=${req.body.caseId}`)
+  }
+  catch (e) {
+    console.log(e)
+    res.send('Error Sending the message')
+  }
+
+})
+
+
+
+
 // for faker
 router.get('/manage-database', adminAuth, (req, res) => {
   res.redirect('/faker')
@@ -219,18 +277,18 @@ router.get('/manage-database', adminAuth, (req, res) => {
 
 
 
-// // generate case data archive and send the link
-// router.post('/savefcmtoken', async (req, res) => {
-//   const fcmToken = req.body.fcmToken
-//   console.log('Received token: ', fcmToken)
-//   const admin = await Admin.findOne({ adminId: 'admin' })
-//   if (admin) {
-//     admin.fcmToken = fcmToken
-//     await admin.save()
-//     console.log('Saved token')
-//     res.status(200).send('Token Saved')
-//   }
-// })
+// generate case data archive and send the link
+router.post('/savefcmtoken', async (req, res) => {
+  const fcmToken = req.body.fcmToken
+  console.log('Received token: ', fcmToken)
+  const admin = await Admin.findOne({ adminId: 'admin' })
+  if (admin) {
+    admin.fcmToken = fcmToken
+    await admin.save()
+    console.log('Saved token')
+    res.status(200).send('Token Saved')
+  }
+})
 
 // endpoint to send data for drawing the chart on public portal
 router.get('/chartdata', async (req, res) => {
