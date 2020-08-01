@@ -54,6 +54,8 @@ public class OTPVerifyFragment extends Fragment{
     private ArrayList<String> videoURL = new ArrayList<String>();
 
     private AppDataManager appDataManager;
+    DatabaseHelper databaseHelper;
+
     private SubmissionActivityViewModel submissionActivityViewModel;
 
     @Nullable
@@ -71,8 +73,8 @@ public class OTPVerifyFragment extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = this.getArguments();
-        //databaseHelper=new DatabaseHelper(getActivity());
-        //databaseHelper.getWritableDatabase();
+        databaseHelper=new DatabaseHelper(getActivity());
+        databaseHelper.getWritableDatabase();
         ministry = getArguments().getString("MINISTRY");
         ministryId=getArguments().getString("MINISTRYID");
         department=getArguments().getString("DEPARTMENT");
@@ -115,6 +117,12 @@ public class OTPVerifyFragment extends Fragment{
                     }
                     else
                     {
+                        boolean ifInserted= databaseHelper.insertData(appDataManager.getToken(),address,description,ministry,department,name,imageCount,audioCount,videoCount,res.getStatus(),res.getCaseId(),appDataManager.getID(),appDataManager.getEmail(),officialName);
+                        if(ifInserted==true)
+                        {
+                            Log.e("Cases Reported Table","Data inserted");
+                        }
+
                         String msg = "Reported Successfully";
                         showSnackbar(msg);
                         startActivity(new Intent(getActivity(), MainActivity.class));
