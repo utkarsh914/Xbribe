@@ -1,2 +1,2 @@
-## Number of cases forecast for an imaginary department
+## Number of cases forecast for an arbitrary department
 
