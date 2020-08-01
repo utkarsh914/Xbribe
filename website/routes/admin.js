@@ -232,7 +232,43 @@ router.get('/manage-database', adminAuth, (req, res) => {
 //   }
 // })
 
+// endpoint to send data for drawing the chart on public portal
+router.get('/chartdata', async (req, res) => {
 
+  var ministries = await Ministry.find({})
+  var toSend = {}
+
+  for (let j=0; j < ministries.length; j++) {
+    let ministry = ministries[j]
+    let data = {}
+    let data_received = []
+    let data_resolved = []
+    const cases = await Case.find({ ministryId: ministry.ministryId })
+
+    for (let i=0; i < cases.length; i++) {
+      let c = cases[i]
+      //for received
+      const date = new Date(c.date.setHours(0, 0, 0, 0)).getTime()
+      if (data[date]) data[date].received += 1
+      else data[date] = { received: 1, resolved: 0 }
+      //for resolved
+      if (c.status === "resolved" && c.resolvedAt) {
+        const resolvedDate = new Date(c.resolvedAt.setHours(0, 0, 0, 0)).getTime()
+        if (data[resolvedDate]) data[resolvedDate].resolved += 1
+        else data[resolvedDate] = { received: 0, resolved: 1 }
+      }
+    }
+
+    Object.keys(data).forEach(key => {
+      data_received.push( { x: new Date(+key), y: data[key].received } )
+      data_resolved.push( { x: new Date(+key), y: data[key].resolved } )
+    })
+
+    toSend[ministry.ministryId] = { data_received, data_resolved }
+  }
+
+  res.json(toSend)
+})
 
 
 // log out the admin
