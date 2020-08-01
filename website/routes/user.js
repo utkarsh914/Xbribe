@@ -23,6 +23,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
+      console.log('error: ', errors.array())
       return res.status(400).json({
         errors: errors.array()
       })
@@ -33,6 +34,7 @@ router.post(
     try {
       let user = await User.findOne({ email })
       if (user) {
+        console.log('User Already Exists')
         return res.status(400).json({ msg: 'User Already Exists' })
       }
 
@@ -92,11 +94,13 @@ router.post(
     try {
       const user = await User.findOne({ email })
       if (!user) {
+        console.log('User Not Exist')
         return res.status(400).json({ message: 'User Not Exist' })
       }
 
       const isMatch = await bcrypt.compare(password, user.password)
       if (!isMatch) {
+        console.log('Incorrect Password !')
         return res.status(400).json({ message: 'Incorrect Password !' })
       }
 
@@ -134,6 +138,7 @@ router.get('/me', userAuth, async (req, res) => {
     const user = await User.findById(req.user.id)
     res.json(user)
   } catch (e) {
+    console.log('Error in Fetching user')
     res.send({ message: 'Error in Fetching user' })
   }
 })
