@@ -89,5 +89,34 @@ router.get('/chartdata', async (req, res) => {
 
 
 
+// process feedback form
+router.post('/feedback', (req, res) => {
+  const { name, email, message } = req.body
+  //send mail
+  var mailOptions = {
+    from: process.env.NODEMAILER_EMAIL,
+    to: process.env.OUR_EMAIL,
+    subject: `XBribe: Feedback from a User (${name})`,
+    html: `<p><b>Name: </b>${name}</p>
+          <p><b>Email: </b>${email}</p>
+          <p><b>Message: </b>${message}</p>
+          <p><b>Dated: </b>${(new Date()).toLocaleString()}</p>
+        `
+  }
+
+  transporter.sendMail( mailOptions, (error, info) => {
+    if (error) {
+      console.log(error)
+      res.send('Some error occured on server side')
+    }
+    else {
+      console.log('Email sent: ' + info.response)
+      req.flash('success_message', 'Thank You for helping us improve.')
+      res.redirect('/')
+      // res.send('<h1>Thank You for helping us improve.</h1>')
+    }
+  })
+})
+
 
 module.exports = router
