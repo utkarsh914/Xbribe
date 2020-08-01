@@ -118,7 +118,6 @@ public class Step_two_Fragment  extends Fragment
         {
             @Override
             public void onClick(View v) {
-                imageList.clear();
                 openImageChoose();
             }
         });
@@ -127,7 +126,6 @@ public class Step_two_Fragment  extends Fragment
         {
             @Override
             public void onClick(View v) {
-                audioList.clear();
                 openAudioChoose();
             }
         });
@@ -135,7 +133,6 @@ public class Step_two_Fragment  extends Fragment
         vidChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                videoList.clear();
                 openVideoChoose();
             }
         });
@@ -491,34 +488,9 @@ public class Step_two_Fragment  extends Fragment
             }
             else
             {
-                String msg = "Please try later!";
-                showSnackbar(msg);
+                Toast.makeText(getActivity(),"Please try later!\"",Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-
-    @Override
-    public void onDestroy()
-    {
-        imageURL.clear();
-        audioURL.clear();
-        videoURL.clear();
-        imageList.clear();
-        audioList.clear();
-        videoList.clear();
-        super.onDestroy();
-    }
-
-    @Override
-    public void onStop() {
-        imageURL.clear();
-        audioURL.clear();
-        videoURL.clear();
-        imageList.clear();
-        audioList.clear();
-        videoList.clear();
-        super.onStop();
     }
 
     public void showSnackbar(String msg)
