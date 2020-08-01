@@ -15,6 +15,11 @@ $(document).ready(() => {
         $("#otp-btn").text('Send OTP')
       }
     })
+    .fail(function(data) {
+      console.log(data.responseText)
+      $('#alert-danger').show(80).text(data.responseText)
+      $("#otp-btn").text('Send OTP')
+    })
   })
 
 })

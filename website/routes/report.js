@@ -243,7 +243,7 @@ router.post('/sendotp', async (req, res) => {
   }
   catch (e) {
     console.log(e)
-    return res.status(400).send('Some error Occured!')
+    return res.status(422).send(e.message)
   }
 
   var mailOptions = {
