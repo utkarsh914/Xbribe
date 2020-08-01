@@ -1,0 +1,27 @@
+<resources>
+            <style name="AppTheme.NoActionBar">
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+            <item name="android:statusBarColor">@android:color/transparent</item>
+        </style>
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:popupBackground">#FAF8F8</item>
+    </style>
+    <style name="editTextStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="boxBackgroundColor">@color/md_grey_50</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/md_grey_50</item>
+    </style>
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button" >
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textSize">13dp</item>
+        <item name="android:textColor">@color/md_grey_50</item>
+    </style>
+
+</resources>

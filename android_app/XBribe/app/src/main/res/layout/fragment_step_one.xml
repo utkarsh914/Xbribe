@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:elevation="8dp"
+        android:id="@+id/scrollable">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relative_layout"
+            android:padding="2dp"
+            android:background="@color/md_blue_700">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/cardview_one"
+                app:cardElevation="4dp"
+                android:elevation="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/relative_layout_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/md_blue_50"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_step1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/roboto"
+                        android:text="Fillup Necessary Details"
+                        android:textColor="@color/md_pink_700"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_info_case"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_step1"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="36dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/roboto"
+                        android:text="Information of the Case"
+                        android:textColor="@color/md_pink_700"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_info_case"
+                        android:layout_marginTop="12dp">
+
+                        <TextView
+                            android:id="@+id/tv_ministry_loading"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Ministry loading..."
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto"
+                            android:elevation="2dp"
+                            android:visibility="visible"
+                            android:textColor="@color/md_black_1000"
+                            android:layout_marginTop="12dp"
+                            android:layout_toStartOf="@id/spinner_ministry"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_ministry"
+                            style="@style/AppTheme.Spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_department_loading"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="Department loading..."
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto"
+                            android:elevation="2dp"
+                            android:visibility="visible"
+                            android:textColor="@color/md_black_1000"
+                            android:layout_marginTop="12dp"
+                            android:layout_below="@id/spinner_ministry"
+                            android:layout_toStartOf="@id/spinner_department"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_department"
+                            style="@style/AppTheme.Spinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/spinner_ministry"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="12dp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_layout1"
+                            style="@style/editTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/spinner_department"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:elevation="10dp"
+                            android:padding="2dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_name_organization"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Name of the Organization"
+                                android:inputType="textMultiLine"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_layout5"
+                            style="@style/editTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/input_layout1"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="4dp"
+                            android:elevation="10dp"
+                            android:padding="2dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_official_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Name of the Official (If known)"
+                                android:inputType="textMultiLine"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relative_layout1"
+                        android:layout_marginTop="36dp">
+
+                        <TextView
+                            android:id="@+id/tv_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto"
+                            android:text="Location"
+                            android:textColor="@color/md_pink_700"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:visibility="visible">
+
+                        </TextView>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_layout2"
+                            style="@style/editTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_location"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:elevation="10dp"
+                            android:padding="2dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_city"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="City"
+                                android:inputType="text"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_layout3"
+                            style="@style/editTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/input_layout2"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="4dp"
+                            android:elevation="10dp"
+                            android:padding="2dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_pincode"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="PIN Code"
+                                android:inputType="number"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/input_layout3"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="4dp"
+                            android:elevation="2dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Address loading..."
+                            android:padding="4dp"
+                            android:textColor="@color/md_black_1000"
+                            android:textSize="16sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relative_layout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relative_layout2"
+                        android:layout_marginTop="36dp">
+
+                        <TextView
+                            android:id="@+id/tv_brief"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:fontFamily="@font/roboto"
+                            android:text="Brief description on the case"
+                            android:textColor="@color/md_pink_800"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:visibility="visible"></TextView>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_layout4"
+                            style="@style/editTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_brief"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="4dp"
+                            android:elevation="10dp"
+                            android:padding="2dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Description"
+                                android:inputType="textLongMessage|textMultiLine"
+                                android:textSize="16sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </RelativeLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_proceed"
+                        style="@style/ButtonStyle"
+                        android:layout_below="@id/relative_layout3"
+                        android:layout_marginTop="24dp"
+                        android:text="PROCEED"
+                        android:textColor="@color/md_grey_50" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_savedrf"
+                        style="@style/ButtonStyle"
+                        android:layout_below="@+id/relative_layout3"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="24dp"
+                        android:minWidth="0dp"
+                        android:text="SAVE AS DRAFT" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

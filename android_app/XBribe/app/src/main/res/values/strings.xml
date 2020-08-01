@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">XBribe</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="shared_pref_key">shared_prefs</string>
+    <string name="disclaimer">DISCLAIMER: The app completely maintains the anonymity of the user and all the data are secured on the server.</string>
+
+    <string name="app_work">An android based application to report concurrent bribery cases in an area.The android app will be utilised on the user end to report such a case. User will select out the category/subcategory of the organization and its location and fill in the details of the relevant official(s)/person(s). They can provide more detailed description in text along with any other form of media. The app can also be used to privately record audio/video footage or even capture snaps of the scene. </string>
+    <string name="bprd">The Bureau of Police Research and Development (BPRD), was set up on 28 August 1970 in furtherance of the objective of the Government of India for the modernisation of police forces. It has evolved as a multifaceted, consultancy organisation. At present it has 4 divisions – Research, Development, Training and Correctional Administration.</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="home_second">Home Second</string>
+    <string name="fcm_token">FCM Token: %s</string>
+</resources>

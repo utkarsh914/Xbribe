@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/main_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_submit"
+            android:icon="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:title="Submit your Case"/>
+        <item
+            android:id="@+id/nav_check"
+            android:icon="@drawable/ic_check_black_24dp"
+            android:title="Check your Cases"/>
+        <item
+            android:id="@+id/nav_notify"
+            android:icon="@drawable/ic_baseline_notifications_active_24"
+            android:title="Case Updates"/>
+        <item
+            android:id="@+id/nav_nearby"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="Nearby Cases"/>
+        <item
+            android:id="@+id/nav_draft"
+            android:icon="@drawable/ic_baseline_drafts_24"
+            android:title="Saved drafts"
+            />
+        <item
+            android:id="@+id/nav_laws"
+            android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+            android:title="Know your Laws"
+            />
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_call_black_24dp"
+            android:title="Contact Us" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="About App" />
+    </group>
+
+</menu>

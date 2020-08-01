@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true"
+        android:outlineAmbientShadowColor="@color/md_pink_800"
+        app:cardElevation="4dp"
+        android:padding="@dimen/margin_padding_size_small"
+        android:layout_marginBottom="@dimen/margin_padding_size_small"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="@dimen/margin_padding_size_medium"
+            android:paddingBottom="@dimen/margin_padding_size_medium">
+
+            <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="19dp"
+                android:src="@drawable/icon_main"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/linear_layout"
+                android:gravity="center"
+                android:layout_marginTop="18dp"
+                android:layout_toRightOf="@+id/app_logo"
+                android:paddingLeft="20dp">
+                <TextView
+                    android:id="@+id/tv_ministry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_medium"
+                    android:fontFamily="@font/roboto"
+                    android:text="Ministry"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="Address"
+                    android:id="@+id/tv_address"
+                    android:fontFamily="@font/roboto"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PIN CODE"
+                    android:id="@+id/tv_pincode"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="@dimen/text_size_small"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="City"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_department"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:layout_marginTop="22dp"
+                    android:textSize="@dimen/text_size_medium"
+                    android:text="Departemnt" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_organisation_name"
+                    android:textSize="@dimen/text_size_medium"
+                    android:fontFamily="@font/roboto"
+                    android:text="Name of the Organisation"
+                    />
+                <TextView
+                    android:id="@+id/tv_official_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Official Name (If Known)"/>
+
+                <TextView
+                    android:id="@+id/tv_case_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lora_bold_italic"
+                    android:layout_marginTop="28dp"
+                    android:textColor="@color/md_grey_400"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sapien velit, aliquet eget commodo nec, auctor a sapien. Nam eu neque vulputate diam rhoncus faucibus. Curabitur quis varius libero. Lorem." />
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_layout"
+                android:paddingLeft="20dp"
+                android:id="@+id/relative_layout"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/app_logo">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_grey_700"
+                    android:text="Swipe left to remove Draft"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
