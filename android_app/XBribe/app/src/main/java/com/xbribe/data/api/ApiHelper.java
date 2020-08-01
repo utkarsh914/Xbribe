@@ -3,7 +3,6 @@ package com.xbribe.data.api;
 import android.content.Context;
 
 import com.xbribe.data.models.CaseData;
-import com.xbribe.data.models.NearbyCaseResponse;
 import com.xbribe.data.models.OrganizationResponse;
 import com.xbribe.data.models.TokenResponse;
 import com.xbribe.data.models.User;
@@ -58,10 +57,6 @@ public class ApiHelper implements ApiService {
     @Override
     public Call<CaseData> reportCase(String token,String orgId, String department, String officialName, String name, String place, String address, String pin, String latitude, String longitude, String description, ArrayList<String> picsArray, ArrayList<String> audiosArray, ArrayList<String> videosArray) {
         return api.reportCase(token, orgId, department, officialName, name, place, address, pin, latitude, longitude, description, picsArray, audiosArray, videosArray);
-    }
-
-    public Call<List<NearbyCaseResponse>> getNearbyCases(String token, Double latitude, Double longitude, Integer radius) {
-        return api.getNearbyCases(token, latitude, longitude, radius);
     }
 
     @Override
