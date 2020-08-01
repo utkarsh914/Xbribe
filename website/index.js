@@ -6,6 +6,7 @@ require('dotenv').config()
 const cors = require('cors')
 
 // load express
+const path = require('path')
 const express = require('express')
 const InitiateMongoServer = require('./configs/database')
 const bodyparser = require('body-parser')
@@ -34,6 +35,7 @@ app.use('/', express.static(__dirname + '/public'))
 
 // set the view engine to ejs
 app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, '/views'));
 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: false }))

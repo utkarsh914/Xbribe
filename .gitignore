@@ -2,11 +2,13 @@
 
 # dependencies
 /website/node_modules
+/node_modules
 /website/public/uploads
 #/firebase
 /website/.pnp
 /website/.pnp.js
 /website/.env
+.env
 
 # misc
 /website/.DS_Store
