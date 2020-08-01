@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Manage Organizations | Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/images/Xbribe_logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+  <script src="/css/bootstrap/jquery.min.js"></script>
+  <script src="/css/bootstrap/popper.min.js"></script>
+  <script src="/css/bootstrap/bootstrap.min.js"></script>
+  <style type="text/css">
+    a {text-decoration: none!important;}
+    .btn-form {width: 70px;}
+  </style>
+</head>
+<body>
+
+<!-- navbar start -->
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top mb-0">
+  <div class="container">
+  <a class="navbar-brand" href="/admin/">ADMINISTRATOR</a>
+  <button class="navbar-toggler justify-content-end" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Public Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="manage-ministry">Manage Organization</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout">Logout</a>
+      </li>
+    </ul>
+  </div>  
+  </div>
+</nav>
+<!-- navbar ends -->
+
+
+  <!-- add organization Modal -->
+  <div class="modal fade" id="orgAddModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Enter Required Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form method="post" action="/admin/add">
+            <div class="form-group">
+              <label for="ministryName">Ministry Name:</label>
+              <input class="form-control" name="ministryName" type="text" pattern="^[a-zA-Z0-9 ]*$" placeholder="Enter Ministry Name" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input class="form-control" placeholder="Enter password" name="password" type="password" placeholder="Create a password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">REGISTER</button>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<div class="jumbotron text-center mb-4">
+	<h2>MANAGE MINISTRIES</h2>
+</div>
+
+
+<div class="container">
+
+  <div class="row d-flex justify-content-center mb-4">
+    <div class="col-md-11">
+      <button class="btn btn-dark btn-block btn-lg" data-toggle="modal" data-target="#orgAddModal">ADD NEW</button>
+    </div>
+  </div>
+	
+	<div class="row d-flex justify-content-center">
+		<div class="col-md-11">
+			<div class="table-responsive">
+          <table class="table table-stripe table-hover">
+    <thead class="thead-ligh table-secondary">
+      <tr>
+        <th>Ministry</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% ministries.forEach((ministry) => { %>
+
+      <tr>
+        <td class="align-middle"><%= ministry.ministryName %> (<b><%= ministry.ministryId %></b>)</td>
+        <td>
+          <form method="post" action="/admin/manage-ministry/edit<%= ministry.ministryId %>">
+            <button class="btn-form btn btn-outline-dark align-middle" type="submit">Edit</button>
+          </form>
+        </td>
+        <td>
+          <form action="/admin/manage-ministry/del/<%= ministry.ministryId %>" method="post">
+            <button class="btn-form btn btn-outline-danger align-middle" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+
+      <% }) %>
+
+    </tbody>
+  </table>
+      </div>
+		</div>
+	</div>
+
+</div>
+
+<footer class="jumbotron text-center mt-5 mb-0">
+  <h4>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Xbribe</h4>
+</footer>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Case Info | Administrator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/images/Xbribe_logo.png" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" href="/css/animate.css">
+    
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <link rel="stylesheet" href="/css/my-styles.css">
+  </head>
+  <body>
+
+    <!-- loader -->
+    <div id="xbribe-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+		<nav class="navbar navbar-expand-lg navbar-dark xbribe_navbar bg-dark xbribe-navbar-light" id="xbribe-navbar">
+	    <div class="container">
+	    	<!-- <a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>Ministry of Agriculture and Farmers Welfare</a> -->
+	    	<a class="navbar-brand" href="/admin">ADMINISTRATOR</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#xbribe-nav" aria-controls="xbribe-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="xbribe-nav">
+	        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/admin/cases">See Cases</a></li>
+	        	<li class="nav-item"><a class="nav-link" href="/">Public Home</a></li>
+	        	<li class="nav-item"><a class="nav-link" href="/admin/manage-ministry">Manage Organization</a></li>
+	        	<li class="nav-item"><a class="nav-link" href="/admin/logout">Logout</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <% if (c.status === "resolved") { %>
+      <div id="snackbar" class="show">
+        This case has been resolved!
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
+    <% } else if (c.status === "accepted") { %>
+      <div id="snackbar" class="show">
+        This case has been Accepted!
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
+    <% } else { %>
+      <div id="snackbar" class="show">
+        ACCEPT THIS CASE?
+        <a href="/admin/manage/case?id=<%=c.caseId%>&status=accepted"><button class="btn btn-primary ml-0 ml-lg-3">Accept</button></a>
+        <a href="/admin/manage/case?id=<%=c.caseId%>&status=archived"><button class="btn btn-light ml-1 mr-0 mr-lg-0">Archive</button></a>
+      </div>
+    <% } %>
+
+
+    <section class="hero-wrap hero-wrap-2 bg-dark" style="background-image: url('/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end">
+          <div class="col-md-9 xbribe-animate pb-3 p-t-100">
+          	<!-- <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p> -->
+            <h1 class="mb-0 bread">Ministry: <%= ministries[c.ministryId] %></h1>
+            <h1 class="mb-0 bread">Department: <%= c.department %></h1>
+            <h3 class="mt-2 text-light">Institute/Organization: <%= c.name %></h3>
+            <h3 class="mt-2 text-light">Concerned Person/Official: <%= c.officialName || 'Not Specified' %></h3>
+            <h5 class="text-light"><b><%= c.place %>,</b> <%= c.date.toLocaleString() %></h5>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="xbribe-section xbribe-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 xbribe-animate">
+            
+            <h2 class="mb-3 xbribe-animate"><b>CASE ID: <%= c.caseId %></b></h2>
+            <h2 class="mb-3 xbribe-animate">Reported from: <%= (c.agent==='app') ? 'Android App' : 'Website' %></h2>
+            <h2 class="mb-3 xbribe-animate">Description</h2>
+            <p class="xbribe-animate"><%= c.description %></p>
+            
+            <h2 class="mb-3 mt-5">#Attached Media</h2>
+            <h3>Pictures:</h3>
+		        <div class="row">
+              <% c.picsArray.forEach((add) => { %>
+                <div class="col-md-4 xbribe-animate">
+                  <div class="work mb-4 img d-flex align-items-end" style="background-image: url('<%= add %>');">
+                    <a href="<%= add %>" class="icon image-popup d-flex justify-content-center align-items-center">
+                      <span class="fa fa-expand"></span>
+                    </a>
+                  </div>
+                </div>
+              <% }) %> 
+            </div>
+            
+            <h3>Audio Recordings:</h3>
+            <div class="row mt-3">
+              <% c.audiosArray.forEach((add) => { %>
+                <div class="col-lg-6 xbribe-animate">
+                  <audio controls>
+                    <source src="<%= add %>" type="audio/mpeg">
+                  </audio>
+                </div>
+              <% }) %>
+            </div>
+
+            <h3>Video Recordings:</h3>
+            <div class="row my-3">
+              <% c.videosArray.forEach((add) => { %>
+                <div class="col-md-6 xbribe-animate">
+                  <video width="100%" height="auto" controls>
+                    <source src="<%= add %>" type="video/mp4">
+                  </video>
+              </div>
+              <% }) %>
+            </div>
+
+            
+            <div class="about-author d-flex p-4 bg-light my-card xbribe-animate">
+              <div class="bio mr-3 col-md-3">
+                <img src="/images/user.webp" alt="Image placeholder" class="img-fluid mb-4">
+              </div>
+              <div class="desc col-md-9">
+                <h3>Reporting Person</h3>
+                <h5>User ID:</h5>
+                <p><%= c.userId._id %></p>
+                <h5>Email:</h5>
+                <p><%= c.email %></p>
+                <h5>Other reported cases:</h5>
+                <ul>
+                  <% c.userId.casesArray.forEach((caseid) => { %>
+                    <a href="/admin/cases/case?id=<%= caseid %>"><li><%= caseid %></li></a>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="col-lg-4 sidebar pl-lg-5 xbribe-animate">
+            <div class="sidebar-box">
+              <form class="search-form" method="GET" action="/admin/cases">
+                <div class="form-group">
+                  <span class="fa fa-search"></span>
+                  <input type="text" name="query" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+            </div>
+
+            <% if (c.status !== "submitted") { %>
+
+              <div class="sidebar-box xbribe-animate">
+                <form id="contactForm" name="contactForm" class="contactForm" method="get" action="/admin/manage/case">
+                  <h3>Case Options</h3>
+                  <!-- hidden input containing case ID -->
+                  <input type="text" name="id" value="<%=c.caseId%>" style="display: none;">
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="status">Set Status</label>
+                        <select name="status" class="custom-select">
+                          <option value="<%= c.status %>"><%= c.status %></option>
+                          <% ["accepted", "archived", "resolved"].forEach((e)=>{ if (e!==c.status) { %>
+                            <option value="<%= e %>"><%= e %></option>
+                          <% }}) %>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="priority">Set Priority</label>
+                        <select name="priority" class="custom-select">
+                          <option value="<%= c.priority %>"><%= c.priority %></option>
+                          <% ["Low", "Medium", "High"].forEach((e)=>{ if (e!==c.priority) { %>
+                            <option value="<%= e %>"><%= e %></option>
+                          <% }}) %>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="folder">Add to Folder</label>
+                        <select name="folder" class="custom-select">
+                          <option value="none">none</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                        <div class="submitting"></div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            <% } %>
+           
+            <div class="sidebar-box xbribe-animate">
+              <h3>Location</h3>
+              <iframe width="100%" height="350px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.it/maps?q=<%= c.coordinates.coordinates.reverse() %>&output=embed"></iframe>
+              <p class="mb-0"><b>Address: </b><%= c.location.address %></p>
+              <p class="mb-0"><b>District: </b><%= c.location.district %></p>
+              <p class="mb-0"><b>PIN code: </b><%= c.location.pin %></p>
+            </div>
+
+            <div class="sidebar-box xbribe-animate">
+              <h3>Contact User</h3>
+              <% if (c.notifications) { c.notifications.forEach((notif)=>{ %> 
+              <div class="d-flex justify-content-end mb-2">
+                <div class="alert alert-secondary chat-ministry mb-1" data-toggle="tooltip" data-placement="right" title="16-6-2020, 9:42">
+                  <b><%= notif.title %></b></br>
+                  <%= notif.message %>
+                </div>
+              </div>
+              <% })} %>
+              <form class="d-flexx" method="POST" action="/admin/manage/case/messages">
+                <input type="text" style="display: none;" name="caseId" value="<%= c.caseId %>">
+                <input type="text" class="form-control mr-2 mb-2" name="title" placeholder="Enter title" required>
+                <input type="text" class="form-control mr-2 mb-2" name="message" placeholder="Enter a message" required>
+                <button type="submit" class="btn btn-primary btn-block mb-2">Send</button>
+              </form>
+            </div>
+
+            <div class="sidebar-box xbribe-animate">
+              <h3>Generate report archive</h3>
+              <a id="archiveButtonlink">
+                <button id="archiveButton" class="btn btn-primary btn-block">
+                  Generate
+                </button>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer xbribe-animate">
+			<div class="container">
+        <p class="copyright text-center mb-0">
+          Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Xbribe
+        </p>
+			</div>
+		</footer>
+
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.easing.1.3.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/jquery.animateNumber.min.js"></script>
+  <script src="/js/bootstrap-datepicker.js"></script>
+  <script src="/js/jquery.timepicker.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/scrollax.min.js"></script>
+  <script src="/js/main.js"></script>
+
+
+    
+  </body>
+</html>
