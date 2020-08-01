@@ -32,6 +32,7 @@ import com.xbribe.data.AppDataManager;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.function.SubmissionActivity;
 import com.xbribe.ui.main.drawers.checkcase.CheckcaseFragment;
+import com.xbribe.ui.main.drawers.notification.NotificationFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,8 +58,7 @@ public class ReportFragment extends Fragment {
     private ReportViewModel reportViewModel;
     private AppDataManager appDataManager;
     private CheckcaseFragment checkcaseFragment;
-    /*private NotificationFragment notificationFragment;
-    private SecretFragment secretFragment;*/
+    private NotificationFragment notificationFragment;
 
     @Nullable
     @Override
@@ -95,7 +95,13 @@ public class ReportFragment extends Fragment {
 
     @OnClick(R.id.report_bribe)
     void reportBribery() {
+        if (appDataManager.getAddress().isEmpty())
+        {
+            Toast.makeText(getActivity(),"Please wait while the address is being fetched",Toast.LENGTH_LONG).show();
+        }
+        else {
             startActivity(new Intent(getActivity(), SubmissionActivity.class));
+        }
     }
 
     @OnClick(R.id.check_cases)
@@ -107,6 +113,7 @@ public class ReportFragment extends Fragment {
                 .addToBackStack("Report")
                 .commit();
     }
+
 
     private void initSlider()
     {

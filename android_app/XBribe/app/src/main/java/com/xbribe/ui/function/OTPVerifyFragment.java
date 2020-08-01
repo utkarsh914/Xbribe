@@ -48,14 +48,12 @@ public class OTPVerifyFragment extends Fragment{
 
     private int imageCount,audioCount,videoCount;
     private  String name,city,pincode,ministryId,department,description,address,latitude,longitude,officialName,ministry;
-    //private DatabaseHelper databaseHelper;
+    private DatabaseHelper databaseHelper;
     private ArrayList<String> imageURL = new ArrayList<String>();
     private ArrayList<String> audioURL = new ArrayList<String>();
     private ArrayList<String> videoURL = new ArrayList<String>();
 
     private AppDataManager appDataManager;
-    DatabaseHelper databaseHelper;
-
     private SubmissionActivityViewModel submissionActivityViewModel;
 
     @Nullable

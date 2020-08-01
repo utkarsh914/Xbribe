@@ -6,7 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DatabaseHelper extends SQLiteOpenHelper
+import androidx.annotation.Nullable;
+
+import java.util.prefs.PreferenceChangeEvent;
+
+import static android.os.Build.ID;
+
+public class DatabaseHelper  extends SQLiteOpenHelper
 {
     public static  final String DATABASE_NMAE="CaseDetails.db";
     public static final String TABLE_NAME="Case_table";

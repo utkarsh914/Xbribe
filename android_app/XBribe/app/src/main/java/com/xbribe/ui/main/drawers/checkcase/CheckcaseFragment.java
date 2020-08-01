@@ -1,5 +1,6 @@
 package com.xbribe.ui.main.drawers.checkcase;
 
+import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,7 +38,7 @@ public class CheckcaseFragment extends  Fragment
 
     ArrayList<String>  imagelist=new ArrayList();
 
-    private AppDataManager appDataManager;
+    private  AppDataManager appDataManager;
 
     Cursor cursor;
 

@@ -54,6 +54,7 @@ import com.xbribe.service.AddressService;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.main.MainActivity;
 import com.xbribe.ui.main.ReportFragment;
+import com.xbribe.ui.main.drawers.drafts.DatabaseSaveDraft;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,7 +86,7 @@ public class Step_one_Fragment extends Fragment
 
     private Organizations organizations;
 
-    //DatabaseSaveDraft databaseSaveDraft;
+    DatabaseSaveDraft databaseSaveDraft;
 
     @BindView(R.id.relative_layout)
     RelativeLayout relativeLayout;
@@ -134,6 +135,9 @@ public class Step_one_Fragment extends Fragment
         ButterKnife.bind(this, parent);
         tvMinistryLoading.setVisibility(View.VISIBLE);
         tvDepartmentLoading.setVisibility(View.VISIBLE);
+
+        databaseSaveDraft=new DatabaseSaveDraft(getActivity());
+        databaseSaveDraft.getWritableDatabase();
 
         step2Fragment = new Step_two_Fragment();
         reportFragment = new ReportFragment();
@@ -262,6 +266,54 @@ public class Step_one_Fragment extends Fragment
     {
         Snackbar snackbar= Snackbar.make(relativeLayout,msg,Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+    @OnClick(R.id.btn_savedrf)
+    void saveDraft()
+    {
+        name_oraganisation = etName.getText().toString();
+        city = etCity.getText().toString();
+        pincode = etPincode.getText().toString();
+        description = etDescription.getText().toString();
+        official=etOfficialName.getText().toString();
+        if(name_oraganisation.isEmpty()==true || city.isEmpty()==true ||
+                pincode.isEmpty()==true  ||  description.isEmpty()==true)
+        {
+            String msg="Please fill in the details";
+            showSnackbar(msg);
+        }
+        else
+        {
+            if(official.isEmpty())
+            {
+                boolean ifInserted= databaseSaveDraft.insertData(ministry,appDataManager.getAddress(),pincode,city,department,name_oraganisation,description,appDataManager.getEmail(),appDataManager.getLatitude(),appDataManager.getLongitude(),"Not Specified",ministryId);
+                if(ifInserted==true)
+                {
+                    String msg="Draft Saved";
+                    showSnackbar(msg);
+                    startActivity(new Intent(getActivity(), MainActivity.class));
+                }
+                else
+                {
+                    String msg="Not saved. Please try again!";
+                    showSnackbar(msg);
+                }
+            }
+            else
+            {
+                boolean ifInserted= databaseSaveDraft.insertData(ministry,appDataManager.getAddress(),pincode,city,department,name_oraganisation,description,appDataManager.getEmail(),appDataManager.getLatitude(),appDataManager.getLongitude(),official,ministryId);
+                if(ifInserted==true)
+                {
+                    String msg="Draft Saved";
+                    showSnackbar(msg);
+                    startActivity(new Intent(getActivity(), MainActivity.class));
+                }
+                else
+                {
+                    String msg="Not saved. Please try again!";
+                    showSnackbar(msg);
+                }
+            }
+        }
     }
 
 }

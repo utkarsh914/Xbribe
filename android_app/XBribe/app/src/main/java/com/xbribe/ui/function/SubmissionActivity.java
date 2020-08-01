@@ -36,6 +36,7 @@ import com.xbribe.R;
 import com.xbribe.data.AppDataManager;
 import com.xbribe.service.AddressService;
 import com.xbribe.ui.MyApplication;
+import com.xbribe.ui.main.drawers.drafts.DatabaseSaveDraft;
 
 import butterknife.ButterKnife;
 
@@ -63,6 +64,9 @@ public class SubmissionActivity  extends AppCompatActivity
     private Step_two_Fragment stepTwoFragment;
     private AppDataManager appDataManager;
 
+    DatabaseSaveDraft databaseSaveDraft;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -72,6 +76,9 @@ public class SubmissionActivity  extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        databaseSaveDraft=new DatabaseSaveDraft(this);
+        databaseSaveDraft.getWritableDatabase();
 
         fragmentManager = getSupportFragmentManager();
         step_one_fragment=new Step_one_Fragment();

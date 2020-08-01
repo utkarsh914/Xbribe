@@ -140,6 +140,12 @@ public class LoginFragment extends Fragment
         }
         else
         {
+            if(appDataManager.getFCMToken().isEmpty())
+            {
+                String msg = "Please Wait!";
+                showSnackbar(msg);
+            }
+            else {
                 showProgress();
                 User user = new User(email.getText().toString(), password.getText().toString(), appDataManager.getFCMToken());
                 viewModel.userLogin(user);
@@ -157,7 +163,7 @@ public class LoginFragment extends Fragment
                         getActivity().finish();
                     }
                 });
-
+            }
         }
     }
 
