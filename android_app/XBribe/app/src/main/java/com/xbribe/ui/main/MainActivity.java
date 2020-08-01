@@ -45,6 +45,8 @@ import com.xbribe.data.AppDataManager;
 import com.xbribe.service.AddressService;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.auth.AuthenticationActivity;
+import com.xbribe.ui.main.drawers.checkcase.CheckcaseFragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -70,9 +72,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppDataManager appDataManager;
     private ReportFragment reportFragment;
 
+    private CheckcaseFragment checkcaseFragment;
     /*private AboutUsFragment aboutUsFragment;
     private ContactFragment contactFragment;
-    private CheckcaseFragment checkcaseFragment;
+
     private DraftFragment draftFragment;
     private NotificationFragment notificationFragment;
     private NearbyFragment nearbyFragment;
@@ -160,7 +163,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         fragmentManager = getSupportFragmentManager();
         reportFragment = new ReportFragment();
-        /*checkcaseFragment=new CheckcaseFragment();
+        checkcaseFragment=new CheckcaseFragment();
+        /*
         aboutUsFragment = new AboutUsFragment();
         contactFragment=new ContactFragment();
         notificationFragment=new NotificationFragment();
@@ -361,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_check)
         {
-        //initFrag(checkcaseFragment);
+        initFrag(checkcaseFragment);
         }
         else if (id == R.id.nav_notify)
         {
