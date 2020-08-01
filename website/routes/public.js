@@ -56,13 +56,58 @@ router.post('/status', async (req, res) => {
 
     if (!foundCase) return res.send('Case not found!\nEntered Wrong details!')
 
-    res.send(foundCase.status)
+    const ministryName = (await Ministry.findOne({ ministryId: foundCase.ministryId })).ministryName
+    const doc = new Pdfkit()
+    // doc.pipe(fs.createWriteStream('demoFile.pdf')) // write to PDF
+    doc.pipe(res)
+    // add stuff to PDF
+    doc.fontSize(16).font('Courier-Bold').text('SUBMITTED REPORT', { align: 'center' })
+    .moveDown()
+    .fontSize(15).font('Helvetica-Bold').text(`Ministry: ${ministryName}`, { align: 'center' })
+    .moveDown()
+    .fontSize(13).text(`Department: ${foundCase.department}`)
+    .moveDown()
+    .fontSize(13).text(`Institute/Organization Name: ${foundCase.name}`)
+    .moveDown()
+    .fontSize(13).text(`Concerned Person/Govt Official Name: ${foundCase.officialName}`)
+    .moveDown()
+
+    .fontSize(12).text(`Date: ${new Date(foundCase.date)}`)
+
+    .text(`Place: ${foundCase.place}`)
+    .text(`Address: ${foundCase.location.address}, ${foundCase.location.pin}`)
+    .text(`Location Coordinates: ${foundCase.coordinates.coordinates[1]} Deg N, ${foundCase.coordinates.coordinates[0]} Deg E`, {
+      link: `https://www.google.com/maps/search/${foundCase.coordinates.coordinates[1]},${foundCase.coordinates.coordinates[0]}`
+    })
+    .text(`Case ID: ${foundCase.caseId}`)
+    .fillColor('blue').text(`Status: ${foundCase.status}`)
+    .fillColor('black').text(`Priority: ${foundCase.priority}`)
+    .moveDown()
+
+    .text('Reporting person Info:')
+    .fontSize(11).font('Helvetica').text(`User ID: ${foundCase.userId}`)
+    .font('Helvetica').text(`User email: ${foundCase.email}`)
+    .moveDown()
+    .fontSize(12).font('Helvetica-Bold').text('Description:')
+    .fontSize(11).font('Helvetica').text(foundCase.description, { align: 'justify' })
+    .moveDown()
+
+    .fontSize(12).font('Helvetica-Bold').text('Count of attached Media:')
+    .fontSize(11).font('Helvetica').text(`Pictures: ${foundCase.picsArray.length}`)
+    .font('Helvetica').text(`Audio Recordings: ${foundCase.audiosArray.length}`)
+    .font('Helvetica').text(`Video Clips: ${foundCase.videosArray.length}`)
+    .moveDown()
+
+    // finalize the PDF and end the stream
+    .end()
   }
   catch (e) {
     console.log(e)
     res.send('Some error occured on server side. Please try again')
   }
 })
+
+
 
 
 
