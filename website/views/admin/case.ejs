@@ -86,7 +86,10 @@
           <div class="col-lg-8 xbribe-animate">
 
             <% if (c.spam === true) { %>
-              <div class="alert alert-danger mb-5">This case was automatically marked as spam. Click to undo</div>
+              <div class="d-flex">
+                <div class="alert alert-danger mb-5 mr-3">This case was automatically marked as spam. Click to undo</div>
+                <a href="/admin/manage/case?id=<%=c.caseId%>&spam=0"><button class="btn btn-primary mt-1">Unmark</button></a>
+              </div>
             <% } %>
             
             <h2 class="mb-3 xbribe-animate"><b>CASE ID: <%= c.caseId %></b></h2>

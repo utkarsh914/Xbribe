@@ -158,6 +158,10 @@ router.get('/manage/case', adminAuth, async (req, res) => {
       subject: 'XBribe: Case status updated',
       html: ``
     }
+
+    if (req.query.spam) {
+      update.spam = (req.query.spam.toString() === '0') ? false : true
+    }
   
     if (req.query.priority) {
       update.priority = req.query.priority
