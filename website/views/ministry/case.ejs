@@ -52,11 +52,20 @@
         This case has been Accepted!
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       </div>
+    <% } else if (c.status === "processing") { %>
+      <div id="snackbar" class="show">
+        This case is under processing!
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
+    <% } else if (c.status === "archived") { %>
+      <div id="snackbar" class="show">
+        This case has been archived!
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
     <% } else { %>
       <div id="snackbar" class="show">
-        ACCEPT THIS CASE?
-        <a href="/ministry/manage/case?id=<%=c.caseId%>&status=accepted"><button class="btn btn-primary ml-0 ml-lg-3">Accept</button></a>
-        <a href="/ministry/manage/case?id=<%=c.caseId%>&status=archived"><button class="btn btn-light ml-1 mr-0 mr-lg-0">Archive</button></a>
+        This case has not been accepted yet!
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       </div>
     <% } %>
 
