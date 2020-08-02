@@ -192,13 +192,14 @@
                 android:id="@+id/tv_image_files"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Image Files:"
+                android:text="Image Files: "
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_image_files_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 0"
+                android:text="0"
                 android:layout_toRightOf="@id/tv_image_files"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
@@ -208,14 +209,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_image_files"
-                android:text="Audio Files:"
+                android:text="Audio Files: "
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_audio_files_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_image_files"
-                android:text=" 0"
+                android:text="0"
                 android:textColor="@color/colorAccent"
                 android:layout_toRightOf="@id/tv_audio_files"
                 android:textSize="16sp"/>
@@ -225,13 +227,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_audio_files"
-                android:text="Video Files:"
+                android:text="Video Files: "
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tv_video_files_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 0"
+                android:text="0"
                 android:layout_below="@id/tv_audio_files"
                 android:textColor="@color/colorAccent"
                 android:layout_toRightOf="@id/tv_video_files"
