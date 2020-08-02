@@ -16,6 +16,8 @@ const DailyStats = require('../models/DailyStats')
 const Ministry = require('../models/Ministry')
 
 
+
+
 // routes
 router.get('/', ministryAuth, (req, res) => {
   res.redirect('/ministry/dashboard')
@@ -29,7 +31,10 @@ router.get('/dashboard', ministryAuth, (req, res) => {
   // use helper fn
   helpers.filter('ministry', req, res)
 })
-  
+
+
+
+
 // login form
 router.get('/login', (req, res) => {
   res.render('ministry/ministry-login')
@@ -86,6 +91,18 @@ router.get('/dashboard/case', ministryAuth, (req, res) => {
   // use helper fn
   helpers.getcase('ministry', req, res)
 })
+
+
+
+
+// logout
+router.get('/logout', ministryAuth, function (req, res) {
+  req.flash('success_message', 'You are logged out!')
+  res.clearCookie('jwt')
+  .redirect('/ministry/login')
+})
+
+
 
 
 module.exports = router
