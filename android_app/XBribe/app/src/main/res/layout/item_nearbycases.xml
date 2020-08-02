@@ -25,7 +25,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/md_blue_50">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,7 +45,7 @@
                 android:text="Address"
                 android:textColor="@color/md_black_1000"
                 android:fontFamily="@font/roboto"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_margin="8dp"
                 android:layout_below="@id/tv_orgName" />
 
@@ -53,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_city"
                 android:text="City"
-                android:textSize="18sp"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto"
                 android:textColor="@color/md_pink_900"
                 android:layout_margin="8dp"
                 android:layout_below="@id/tv_addr"/>
@@ -63,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_pin"
                 android:text="PIN CODE"
-                android:textSize="18sp"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
                 android:textColor="@color/md_pink_900"
                 android:layout_margin="8dp"
                 android:layout_below="@id/tv_addr"
