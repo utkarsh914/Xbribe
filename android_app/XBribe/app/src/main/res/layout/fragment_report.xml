@@ -149,16 +149,15 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/secret_fragment"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/view_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="4dp"
+        android:src="@drawable/ic_baseline_adjust_24"
         app:elevation="8dp"
         app:fabSize="auto"
-        android:src="@drawable/ic_baseline_adjust_24"/>
+        app:layout_constraintBottom_toTopOf="@id/view_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/view_blue"
