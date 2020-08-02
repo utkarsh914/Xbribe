@@ -348,4 +348,6 @@ print(pred2)
 
 ## The model is ready
 
+## Additional hardcoding in the app.py file filters out random text (eg- knflkjsadlkjasgsfu) and some abusive words.
+
 
