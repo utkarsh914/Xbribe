@@ -23,16 +23,16 @@ var filterPost = async (type, req, res) => {
   }
 
 
-  const spam = req.query.spam
-  if (spam) {
-    if (parseInt(spam) === 1)
-      filter['$and'].push({ spam: true })
-    else
-      filter['$and'].push({ spam: { $ne: true } })
-  }
-  else {
-    filter['$and'].push({ spam: { $ne: true } })
-  }
+  // const spam = req.query.spam
+  // if (spam) {
+  //   if (parseInt(spam) === 1)
+  //     filter['$and'].push({ spam: true })
+  //   else
+  //     filter['$and'].push({ spam: { $ne: true } })
+  // }
+  // else {
+  //   filter['$and'].push({ spam: { $ne: true } })
+  // }
 
   //if seeing on admin spam page
   if (req.url === '/spam') {
@@ -91,6 +91,7 @@ var filterPost = async (type, req, res) => {
   let orderBy = req.query.orderBy || "new"
   let totalPages = 1
 
+  console.log(filter)
   Case.countDocuments(filter, async (err, count)=>{
     if (err) return err;
     //if zero records found

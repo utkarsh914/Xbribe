@@ -84,6 +84,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 xbribe-animate">
+
+            <% if (c.spam === true) { %>
+              <div class="alert alert-danger mb-5">This case was automatically marked as spam. Click to undo</div>
+            <% } %>
             
             <h2 class="mb-3 xbribe-animate"><b>CASE ID: <%= c.caseId %></b></h2>
             <h2 class="mb-3 xbribe-animate">Reported from: <%= (c.agent==='app') ? 'Android App' : 'Website' %></h2>
