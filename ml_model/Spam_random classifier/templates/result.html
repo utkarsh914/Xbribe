@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			ML App
+		</div>
+		<h2>Spam Detector</h2>
+		
+	</div>
+	</header>
+	
+	<div class="results">
+
+    <h3>Your input was:</h3><h2>{{msg}}</h2>
+  
+
+ 
+
+		
+	{% if prediction ==[1] %}
+    <h2 style="color:red;">It's probably Spam</h2>
+    {% endif %}
+	{% if prediction== [0] %}
+	<h2 style="color:blue;">It's probably Ham</h2>
+	{% endif %}
+
+	</div>
+
+</body>
+</html>
