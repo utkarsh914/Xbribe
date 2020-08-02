@@ -58,7 +58,7 @@ public class ReportFragment extends Fragment {
     private ReportViewModel reportViewModel;
     private AppDataManager appDataManager;
     private CheckcaseFragment checkcaseFragment;
-    private NotificationFragment notificationFragment;
+    private SecretFragment secretFragment;
 
     @Nullable
     @Override
@@ -114,6 +114,15 @@ public class ReportFragment extends Fragment {
                 .commit();
     }
 
+    @OnClick(R.id.secret_fragment)
+    void openSecretFragment()
+    {
+        secretFragment = new SecretFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main_frame,secretFragment)
+                .addToBackStack("Report")
+                .commit();
+    }
 
     private void initSlider()
     {
