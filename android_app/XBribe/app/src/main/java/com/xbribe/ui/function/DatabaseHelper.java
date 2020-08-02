@@ -31,6 +31,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     public static final String COL_13="USERID";
     public static final String COL_14="EMAIL";
     public static final String COL_15="OFFICIALNAME";
+    public static final String COL_16="DATE";
+
 
    public DatabaseHelper(Context context)
    {
@@ -40,7 +42,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,TOKEN TEXT,ADDRESS TEXT,DESCRIPTION TEXT,MINISTRY TEXT,DEPARTMENT TEXT,ORGANISATIONNAME TEXT ,IMAGECOUNT INTEGER,AUDIOCOUNT INTEGER,VIDEOCOUNT INTEGER,CASEPROCESS TEXT,CASEID TEXT,USERID TEXT,EMAIL TEXT,OFFICIALNAME TEXT)");
+        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,TOKEN TEXT,ADDRESS TEXT,DESCRIPTION TEXT,MINISTRY TEXT,DEPARTMENT TEXT,ORGANISATIONNAME TEXT ,IMAGECOUNT INTEGER,AUDIOCOUNT INTEGER,VIDEOCOUNT INTEGER,CASEPROCESS TEXT,CASEID TEXT,USERID TEXT,EMAIL TEXT,OFFICIALNAME TEXT,DATE TEXT)");
 
     }
 
@@ -49,7 +51,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
      db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
      onCreate(db);
     }
-    public boolean insertData(String token,String address,String description,String ministry,String department,String organisationname,Integer imagecount,Integer  audiocount,Integer videocount,String caseprocess,String caseid,String userid,String email,String officialName)
+    public boolean insertData(String token,String address,String description,String ministry,String department,String organisationname,Integer imagecount,Integer  audiocount,Integer videocount,String caseprocess,String caseid,String userid,String email,String officialName,String date)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
@@ -68,6 +70,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper
         contentValues.put(COL_13,userid);
         contentValues.put(COL_14,email);
         contentValues.put(COL_15,officialName);
+        contentValues.put(COL_16,date);
         long success=db.insert(TABLE_NAME,null,contentValues);
         if(success==-1)
             return  false;

@@ -1,5 +1,7 @@
 package com.xbribe.ui.main.drawers.checkcase;
 
+import android.telephony.mbms.StreamingServiceInfo;
+
 public class CheckcaseModel
 {
 
@@ -13,19 +15,23 @@ public class CheckcaseModel
     private String imagesno;
     private String audiono;
     private String videono;
+    private String date;
 
-    public CheckcaseModel(String crimeimage, String ministry, String department, String name_organization,String officialName, String case_desc, String location, String imagesno, String audiono, String videono) {
+
+    public CheckcaseModel(String crimeimage, String ministry, String department, String name_organization, String officialName, String case_desc, String location, String imagesno, String audiono, String videono, String date) {
         this.crimeimage = crimeimage;
         this.ministry = ministry;
         this.department = department;
         this.name_organization = name_organization;
-        this.officialName=officialName;
+        this.officialName = officialName;
         this.case_desc = case_desc;
         this.location = location;
         this.imagesno = imagesno;
         this.audiono = audiono;
         this.videono = videono;
+        this.date = date;
     }
+
     public String getCrimeimage() {
         return crimeimage;
     }
@@ -56,6 +62,14 @@ public class CheckcaseModel
 
     public void setName_organization(String name_organization) {
         this.name_organization = name_organization;
+    }
+
+    public String getOfficialName() {
+        return officialName;
+    }
+
+    public void setOfficialName(String officialName) {
+        this.officialName = officialName;
     }
 
     public String getCase_desc() {
@@ -98,11 +112,11 @@ public class CheckcaseModel
         this.videono = videono;
     }
 
-    public String getOfficialName() {
-        return officialName;
+    public String getDate() {
+        return date;
     }
 
-    public void setOfficialName(String officialName) {
-        this.officialName = officialName;
+    public void setDate(String date) {
+        this.date = date;
     }
 }

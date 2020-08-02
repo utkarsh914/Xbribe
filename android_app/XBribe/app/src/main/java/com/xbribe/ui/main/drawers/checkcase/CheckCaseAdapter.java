@@ -58,6 +58,7 @@ public class CheckCaseAdapter extends RecyclerView.Adapter<CheckCaseAdapter.View
         holder.audiono.setText(checklist.get(position).getAudiono());
         holder.videono.setText(checklist.get(position).getVideono());
         holder.officialName.setText(checklist.get(position).getOfficialName());
+        holder.date.setText(checklist.get(position).getDate());
     }
 
     @Override
@@ -91,6 +92,9 @@ public class CheckCaseAdapter extends RecyclerView.Adapter<CheckCaseAdapter.View
         TextView audiono;
         @BindView(R.id.tv_video_no)
         TextView videono;
+        @BindView(R.id.tv_date)
+        TextView date;
+
 
         public ViewHolder(@NonNull View itemView)
         {

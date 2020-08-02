@@ -1,6 +1,7 @@
 package com.xbribe.data.api;
 
 import com.xbribe.data.models.CaseData;
+import com.xbribe.data.models.NearbyCaseResponse;
 import com.xbribe.data.models.OrganizationResponse;
 import com.xbribe.data.models.TokenResponse;
 import com.xbribe.data.models.User;
@@ -33,6 +34,13 @@ public interface ApiService
 
     @GET("getministries")
     Call<OrganizationResponse> getOrganizations();
+
+    @FormUrlEncoded
+    @POST("user/fetchNearbyCases")
+    Call<List<NearbyCaseResponse>> getNearbyCases(@Header("token") String token,
+                                                  @Field("latitude") Double latitude,
+                                                  @Field("longitude") Double longitude,
+                                                  @Field("radius") Integer radius);
     
     @FormUrlEncoded
     @POST("report")

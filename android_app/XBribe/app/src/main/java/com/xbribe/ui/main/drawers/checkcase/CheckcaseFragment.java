@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,10 @@ public class CheckcaseFragment extends  Fragment
     @BindView(R.id.recycler_checkcase)
     RecyclerView recyclerView;
 
+    @BindView(R.id.pb_checkcase)
+    ProgressBar progressBar;
+
+
     CheckCaseAdapter checkCaseAdapter;
 
     List<CheckcaseModel> caselist;
@@ -63,6 +68,7 @@ public class CheckcaseFragment extends  Fragment
         View parent = inflater.inflate(R.layout.fragment_check_case, container, false);
         ButterKnife.bind(this, parent);
         nocases.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         databaseHelper=new DatabaseHelper(getActivity());
         databaseHelper.getWritableDatabase();
         appDataManager = ((MyApplication) getActivity().getApplicationContext()).getDataManager();
@@ -104,6 +110,8 @@ public class CheckcaseFragment extends  Fragment
     {
         cursor=databaseHelper.getAllDetails();
 
+        progressBar.setVisibility(View.INVISIBLE);
+
         if(cursor.getCount()==0)
         {
             nocases.setVisibility(View.VISIBLE);
@@ -127,7 +135,7 @@ public class CheckcaseFragment extends  Fragment
             {
              if(cursor.getString(13).equals(appDataManager.getEmail()))
              {
-                 caselist.add(new CheckcaseModel(imag.get(i),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(14),cursor.getString(3),cursor.getString(2),cursor.getString(7),cursor.getString(8),cursor.getString(9)));
+                 caselist.add(new CheckcaseModel(imag.get(i),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(14),cursor.getString(3),cursor.getString(2),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(15)));
                  i++;
                  nocases.setVisibility(View.INVISIBLE);
                  flag=1;
