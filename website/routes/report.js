@@ -111,17 +111,18 @@ router.post('/', userAuth, async (req, res) => {
       }
     })
     const isspam = response.data.isspam.toString()
-    if (isspam === '1') {
-      if (agent === 'app')
-        return res.status(400).json({ error: true, message: 'Your case was marked as spam and was not registered!' })
-      else {
-        req.flash('error_message', 'Your case was marked as spam and was not registered!')
-        res.clearCookie('token')
-        .clearCookie('caseId')
-        .redirect('/report/newuser')
-        return console.log('Case marked a spam')
-      }
-    }
+    if (isspam === '1') console.log('case was marked as spam')
+    // if (isspam === '1') {
+    //   if (agent === 'app')
+    //     return res.status(400).json({ error: true, message: 'Your case was marked as spam and was not registered!' })
+    //   else {
+    //     req.flash('error_message', 'Your case was marked as spam and was not registered!')
+    //     res.clearCookie('token')
+    //     .clearCookie('caseId')
+    //     .redirect('/report/newuser')
+    //     return console.log('Case marked a spam')
+    //   }
+    // }
 
 
     // fetch coordinates when reported from website
@@ -162,7 +163,8 @@ router.post('/', userAuth, async (req, res) => {
       picsArray: (typeof form.picsArray === 'string') ? [form.picsArray] : form.picsArray || [],
       audiosArray: (typeof form.audiosArray === 'string') ? [form.audiosArray] : form.audiosArray || [],
       videosArray: (typeof form.videosArray === 'string') ? [form.videosArray] : form.videosArray || [],
-      agent: agent
+      agent: agent,
+      spam: (isspam === '1') ? true : false
     })
 
     //save the case to mongodb

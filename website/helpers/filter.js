@@ -2,7 +2,7 @@ const Case = require('../models/Case')
 // const Ministry = require('../models/Ministry')
 //helper fn
 const getMinistries = require("./getMinistries")
-const { query } = require('express')
+
 
 var filterPost = async (type, req, res) => {
 
@@ -17,13 +17,18 @@ var filterPost = async (type, req, res) => {
     "posts": []
   }
 
+  var filter = {
+    // don't include spam cases by default
+    $and: [ { spam: { $ne: true } } ]
+  }
+
+  // only pass accepted or further status' cases to ministry
+  if (type === 'ministry')
+    filter['$and'].push({ status: { $ne: 'submitted' } })
+
   //make an object containing all ministries key value as id and name
   if (type!=="ministry") {
 	  response.ministries = await getMinistries()
-  }
-
-  var filter = {
-    $and: []
   }
 
   const searchQuery = req.query.query //|| req.signedCookies.query

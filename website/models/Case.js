@@ -90,6 +90,10 @@ const caseSchema = mongoose.Schema({
     type: String,
     enum: ['app', 'web'],
     required: true
+  },
+  spam: {
+    type: Boolean,
+    default: false
   }
 })
 
