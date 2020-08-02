@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
+const axios = require('axios')
 // auth middleware
 const { userAuth } = require('../middleware/auth')
 // cookie config
@@ -92,13 +93,31 @@ router.get('/', userAuth, (req, res) => {
 router.post('/', userAuth, async (req, res) => {
   try {
     var form = req.body
-    console.log(form)
+    console.log(form, '\n')
+
+    //check for spam from online model
+    const params = { "message": form.description }
+    const url = 'https://spamrandomclassifier.herokuapp.com/predict'
+    const response = await axios.post(url, params, {
+      "headers": {
+        "content-type": "application/json"
+      }
+    })
+    const isspam = response.data.isspam.toString()
+    if (isspam === '1') {
+      req.flash('error_message', 'Your case was marked as spam and was not registered!')
+      res.clearCookie('token')
+      .clearCookie('caseId')
+      .redirect('/report/newuser')
+      return console.log('Case marked a spam')
+    }
+
     const caseId = req.signedCookies.caseId || await generateCaseID()
     const { id: userId, email, agent } = req.user
 
     //check for valid email
     if (!['gmail', 'hotmail', 'yahoo', 'bing'].includes(email.split('@')[1].split('.')[0])) {
-    	throw new Error('Invalid email')
+    	throw new Error('Invalid email. Only emails on gmail, yahoo, hotmail, bing domains are accepted.')
     }
 
     //check for duplicate description
@@ -231,7 +250,7 @@ router.post('/sendotp', async (req, res) => {
 
   try {
   	if (!['gmail', 'hotmail', 'yahoo', 'bing'].includes(email.split('@')[1].split('.')[0])) {
-    	throw new Error('Invalid email')
+    	throw new Error('Invalid email. Only emails on gmail, yahoo, hotmail, bing domains are accepted.')
     }
     var user = await User.findOne({ email })
     if (!user) {
