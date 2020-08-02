@@ -141,6 +141,7 @@ public class Step_one_Fragment extends Fragment
 
         step2Fragment = new Step_two_Fragment();
         reportFragment = new ReportFragment();
+
         Bundle bundleDraft = getActivity().getIntent().getExtras();
         if(bundleDraft!=null)
         {
@@ -154,7 +155,7 @@ public class Step_one_Fragment extends Fragment
             bundle.putString("PINCODE",bundleDraft.getString("PINCODE"));
             bundle.putString("DESCRIPTION",bundleDraft.getString("DESCRIPTION"));
             bundle.putString("ADDRESS",bundleDraft.getString("ADDRESS"));
-            bundle.putString("LATITUDE",bundleDraft.getString("LONGITUDE"));
+            bundle.putString("LATITUDE",bundleDraft.getString("LATITUDE"));
             bundle.putString("LONGITUDE",bundleDraft.getString("LONGITUDE"));
             step2Fragment.setArguments(bundle);
             getActivity().getSupportFragmentManager().beginTransaction()
