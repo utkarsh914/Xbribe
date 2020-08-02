@@ -141,6 +141,7 @@ public class Step_one_Fragment extends Fragment
 
         step2Fragment = new Step_two_Fragment();
         reportFragment = new ReportFragment();
+
         Bundle bundleDraft = getActivity().getIntent().getExtras();
         if(bundleDraft!=null)
         {
