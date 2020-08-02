@@ -48,6 +48,7 @@ import com.xbribe.ui.auth.AuthenticationActivity;
 import com.xbribe.ui.main.drawers.checkcase.CheckcaseFragment;
 import com.xbribe.ui.main.drawers.drafts.DraftFragment;
 import com.xbribe.ui.main.drawers.laws.LawsFragment;
+import com.xbribe.ui.main.drawers.nearby.NearbyFragment;
 import com.xbribe.ui.main.drawers.notification.NotificationFragment;
 
 import butterknife.BindView;
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AppDataManager appDataManager;
     private ReportFragment reportFragment;
     private CheckcaseFragment checkcaseFragment;
+    private NearbyFragment nearbyFragment;
+
     private DraftFragment draftFragment;
     private NotificationFragment notificationFragment;
     private LawsFragment lawsFragment;
@@ -164,6 +167,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         checkcaseFragment=new CheckcaseFragment();
         reportFragment = new ReportFragment();
+        nearbyFragment=new NearbyFragment();
+
         notificationFragment=new NotificationFragment();
         draftFragment=new DraftFragment();
         lawsFragment=new LawsFragment();
@@ -364,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(id == R.id.nav_nearby)
         {
-            //initFrag(nearbyFragment);
+            initFrag(nearbyFragment);
         }
         else if (id == R.id.nav_contact)
         {

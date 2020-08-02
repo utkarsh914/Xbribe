@@ -26,7 +26,9 @@ import com.xbribe.ui.main.MainActivity;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +49,8 @@ public class OTPVerifyFragment extends Fragment{
     ConstraintLayout otponstraintLayout;
 
     private int imageCount,audioCount,videoCount;
-    private  String name,city,pincode,ministryId,department,description,address,latitude,longitude,officialName,ministry;
+    private  String name,city,pincode,ministryId,department,description,address,latitude,longitude,officialName,ministry,date ;
+
     private DatabaseHelper databaseHelper;
     private ArrayList<String> imageURL = new ArrayList<String>();
     private ArrayList<String> audioURL = new ArrayList<String>();
@@ -63,7 +66,6 @@ public class OTPVerifyFragment extends Fragment{
         ButterKnife.bind(this,parent);
         submissionActivityViewModel = ViewModelProviders.of(getActivity()).get(SubmissionActivityViewModel.class);
         appDataManager = ((MyApplication) getActivity().getApplication()).getDataManager();
-
         return parent;
     }
 
@@ -91,6 +93,10 @@ public class OTPVerifyFragment extends Fragment{
         imageCount=Integer.valueOf(imageURL.size());
         audioCount=Integer.valueOf(audioURL.size());
         videoCount=Integer.valueOf(videoURL.size());
+        Calendar calendar=Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEEE , dd-MMM-yyyy hh:mm:ss a");
+        date=simpleDateFormat.format(calendar.getTime());
+
     }
 
     @OnClick(R.id.btn_submit)
@@ -115,7 +121,7 @@ public class OTPVerifyFragment extends Fragment{
                     }
                     else
                     {
-                        boolean ifInserted= databaseHelper.insertData(appDataManager.getToken(),address,description,ministry,department,name,imageCount,audioCount,videoCount,res.getStatus(),res.getCaseId(),appDataManager.getID(),appDataManager.getEmail(),officialName);
+                        boolean ifInserted= databaseHelper.insertData(appDataManager.getToken(),address,description,ministry,department,name,imageCount,audioCount,videoCount,res.getStatus(),res.getCaseId(),appDataManager.getID(),appDataManager.getEmail(),officialName,date);
                         if(ifInserted==true)
                         {
                             Log.e("Cases Reported Table","Data inserted");
