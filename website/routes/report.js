@@ -111,7 +111,8 @@ router.post('/', userAuth, async (req, res) => {
       }
     })
     const isspam = response.data.isspam.toString()
-    if (isspam === '1') console.log('case was marked as spam')
+    if (isspam === '1') console.log('case was marked as low priority')
+    else if (isspam === '2') console.log('case was marked as spam with low priority')
     // if (isspam === '1') {
     //   if (agent === 'app')
     //     return res.status(400).json({ error: true, message: 'Your case was marked as spam and was not registered!' })
@@ -164,7 +165,8 @@ router.post('/', userAuth, async (req, res) => {
       audiosArray: (typeof form.audiosArray === 'string') ? [form.audiosArray] : form.audiosArray || [],
       videosArray: (typeof form.videosArray === 'string') ? [form.videosArray] : form.videosArray || [],
       agent: agent,
-      spam: (isspam === '1') ? true : false
+      spam: (isspam === '2') ? true : false,
+      priority: (isspam !== '0') ? 'Low' : 'Medium'
     })
 
     //save the case to mongodb

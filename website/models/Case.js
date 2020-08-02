@@ -70,7 +70,7 @@ const caseSchema = mongoose.Schema({
   },
   priority: {
     type: String,
-    default: 'Low'
+    default: 'Medium'
   },
   folder: {
     type: String,
