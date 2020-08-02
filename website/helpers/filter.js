@@ -18,10 +18,11 @@ var filterPost = async (type, req, res) => {
   }
 
   var filter = {
-    $and: []
+    // don't include spam cases by default
+    $and: [ { spam: { $ne: true } } ]
   }
 
-  // only pass accepted+ cases to ministry
+  // only pass accepted or further status' cases to ministry
   if (type === 'ministry')
     filter['$and'].push({ status: { $ne: 'submitted' } })
 
