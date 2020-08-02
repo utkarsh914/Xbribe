@@ -5,5 +5,6 @@ module.exports = {
   getcase: require('./fetchcase'),
   getcasecount: require('./getcasecount'),
   create_zip: require('./create_zip'),
-  sendFCM: require('./sendFCM')
+  sendFCM: require('./sendFCM'),
+  geocode: require('./geocode')
 }

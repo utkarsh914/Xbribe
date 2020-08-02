@@ -123,6 +123,15 @@ router.post('/', userAuth, async (req, res) => {
       }
     }
 
+
+    // fetch coordinates when reported from website
+    if (agent === 'web') {
+      const coordinates = await helpers.geocode(form.address)
+      console.log(coordinates)
+      form.latitude = coordinates.latitude
+      form.longitude = coordinates.longitude
+    }
+
     //check for duplicate description
     // const dupCase = await Case.findOne({ description: form.description })
     // if (dupCase) throw new Error('Duplicate case')
