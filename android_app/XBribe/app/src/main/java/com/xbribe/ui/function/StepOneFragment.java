@@ -1,24 +1,13 @@
 package com.xbribe.ui.function;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,31 +15,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationAvailability;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.storage.FirebaseStorage;
-import com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator;
-import com.xbribe.Constants;
 import com.xbribe.R;
 import com.xbribe.data.AppDataManager;
 import com.xbribe.data.models.Organizations;
-import com.xbribe.service.AddressService;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.main.MainActivity;
 import com.xbribe.ui.main.ReportFragment;
@@ -58,19 +30,12 @@ import com.xbribe.ui.main.drawers.drafts.DatabaseSaveDraft;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
-
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-
-public class Step_one_Fragment extends Fragment
+public class StepOneFragment extends Fragment
 {
 
     private SubmissionActivityViewModel submissionActivityViewModel;
@@ -78,7 +43,7 @@ public class Step_one_Fragment extends Fragment
     private ArrayList<String> departmentData;
     private SpinnerAdapter1 spinnerAdapter1;
     private SpinnerAdapter2 spinnerAdapter2;
-    private Step_two_Fragment step2Fragment;
+    private StepTwoFragment step2Fragment;
     private ReportFragment reportFragment;
     private AppDataManager appDataManager;
 
@@ -139,7 +104,7 @@ public class Step_one_Fragment extends Fragment
         databaseSaveDraft=new DatabaseSaveDraft(getActivity());
         databaseSaveDraft.getWritableDatabase();
 
-        step2Fragment = new Step_two_Fragment();
+        step2Fragment = new StepTwoFragment();
         reportFragment = new ReportFragment();
 
         Bundle bundleDraft = getActivity().getIntent().getExtras();

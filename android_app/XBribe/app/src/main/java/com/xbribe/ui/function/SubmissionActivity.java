@@ -60,8 +60,8 @@ public class SubmissionActivity  extends AppCompatActivity
     private int ctr=1;
 
     private FragmentManager fragmentManager;
-    private Step_one_Fragment step_one_fragment;
-    private Step_two_Fragment stepTwoFragment;
+    private StepOneFragment step_one_fragment;
+    private StepTwoFragment stepTwoFragment;
     private AppDataManager appDataManager;
 
     DatabaseSaveDraft databaseSaveDraft;
@@ -81,8 +81,8 @@ public class SubmissionActivity  extends AppCompatActivity
         databaseSaveDraft.getWritableDatabase();
 
         fragmentManager = getSupportFragmentManager();
-        step_one_fragment=new Step_one_Fragment();
-        stepTwoFragment = new Step_two_Fragment();
+        step_one_fragment=new StepOneFragment();
+        stepTwoFragment = new StepTwoFragment();
 
         initFrag(step_one_fragment);
         appDataManager = ((MyApplication) getApplication()).getDataManager();

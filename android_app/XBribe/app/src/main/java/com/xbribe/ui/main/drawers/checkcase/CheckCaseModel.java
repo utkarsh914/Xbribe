@@ -2,7 +2,7 @@ package com.xbribe.ui.main.drawers.checkcase;
 
 import android.telephony.mbms.StreamingServiceInfo;
 
-public class CheckcaseModel
+public class CheckCaseModel
 {
 
     private String crimeimage;
@@ -18,7 +18,7 @@ public class CheckcaseModel
     private String date;
 
 
-    public CheckcaseModel(String crimeimage, String ministry, String department, String name_organization, String officialName, String case_desc, String location, String imagesno, String audiono, String videono, String date) {
+    public CheckCaseModel(String crimeimage, String ministry, String department, String name_organization, String officialName, String case_desc, String location, String imagesno, String audiono, String videono, String date) {
         this.crimeimage = crimeimage;
         this.ministry = ministry;
         this.department = department;

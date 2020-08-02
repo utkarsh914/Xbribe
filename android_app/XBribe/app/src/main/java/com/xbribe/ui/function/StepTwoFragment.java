@@ -47,7 +47,7 @@ import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
 
-public class Step_two_Fragment  extends Fragment
+public class StepTwoFragment extends Fragment
 {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int PICK_AUDIO_REQUEST = 2;

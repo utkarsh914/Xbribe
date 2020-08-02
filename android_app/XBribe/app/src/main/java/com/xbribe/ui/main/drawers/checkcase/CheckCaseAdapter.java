@@ -1,23 +1,17 @@
 package com.xbribe.ui.main.drawers.checkcase;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.xbribe.R;
-import com.xbribe.data.models.CollecImages;
 
 import java.util.List;
 
@@ -29,9 +23,9 @@ public class CheckCaseAdapter extends RecyclerView.Adapter<CheckCaseAdapter.View
     @BindView(R.id.tv_no_cases)
     TextView no_cases;
     Context context;
-    List<CheckcaseModel>  checklist;
+    List<CheckCaseModel>  checklist;
 
-    public CheckCaseAdapter(Context context, List<CheckcaseModel> checklist) {
+    public CheckCaseAdapter(Context context, List<CheckCaseModel> checklist) {
         this.context = context;
         this.checklist = checklist;
     }
