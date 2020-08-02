@@ -201,12 +201,27 @@
 
                     <div class="col-md-12">
                       <div class="form-group">
+                        <label for="spam">Mark as spam</label>
+                        <select name="spam" class="custom-select">
+                          <% if (c.spam === true ) { %>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                          <% } else { %>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                          <% } %>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-md-12">
+                      <div class="form-group">
                         <label for="folder">Add to Folder</label>
                         <select name="folder" class="custom-select">
                           <option value="none">none</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-md-12">
                       <div class="form-group">
