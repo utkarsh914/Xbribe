@@ -1,11 +1,8 @@
 package com.xbribe.ui.main.drawers.drafts;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.CaptivePortal;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,9 +20,7 @@ import com.xbribe.R;
 
 import com.xbribe.data.AppDataManager;
 import com.xbribe.ui.MyApplication;
-import com.xbribe.ui.function.Step_two_Fragment;
 import com.xbribe.ui.function.SubmissionActivity;
-import com.xbribe.ui.main.drawers.checkcase.CheckcaseModel;
 
 
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
 package com.xbribe.ui.main.drawers.checkcase;
 
-import android.app.AlertDialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -59,7 +58,7 @@ public class CheckcaseFragment extends  Fragment
 
     CheckCaseAdapter checkCaseAdapter;
 
-    List<CheckcaseModel> caselist;
+    List<CheckCaseModel> caselist;
 
 
     @Nullable
@@ -125,7 +124,7 @@ public class CheckcaseFragment extends  Fragment
         }
     }
 
-    public List<CheckcaseModel> uploadlist(ArrayList<String> imag)
+    public List<CheckCaseModel> uploadlist(ArrayList<String> imag)
     {
             caselist = new ArrayList<>();
             int i=0;
@@ -135,7 +134,7 @@ public class CheckcaseFragment extends  Fragment
             {
              if(cursor.getString(13).equals(appDataManager.getEmail()))
              {
-                 caselist.add(new CheckcaseModel(imag.get(i),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(14),cursor.getString(3),cursor.getString(2),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(15)));
+                 caselist.add(new CheckCaseModel(imag.get(i),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(14),cursor.getString(3),cursor.getString(2),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(15)));
                  i++;
                  nocases.setVisibility(View.INVISIBLE);
                  flag=1;

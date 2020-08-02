@@ -369,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(id == R.id.nav_nearby)
         {
-            initFrag(nearbyFragment);
+            //initFrag(nearbyFragment);
         }
         else if (id == R.id.nav_contact)
         {
