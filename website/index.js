@@ -62,6 +62,7 @@ app.use((req, res, next) => {
 // use routes
 app.use('/', require('./routes/public'))
 app.use('/admin', require('./routes/admin'))
+app.use('/ministry', require('./routes/ministry'))
 app.use('/user', require('./routes/user'))
 app.use('/report', require('./routes/report'))
 app.use('/getMinistries', require('./routes/getMinistries'))
