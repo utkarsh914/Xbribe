@@ -16,5 +16,19 @@ const DailyStats = require('../models/DailyStats')
 const Ministry = require('../models/Ministry')
 
 
+// routes
+router.get('/', ministryAuth, (req, res) => {
+    res.redirect('/ministry/dashboard')
+  })
+  
+  
+  
+  
+// ministry dashboard having filter sort functions too
+  router.get('/dashboard', ministryAuth, (req, res) => {
+    // use helper fn
+    helpers.filter('ministry', req, res)
+  })
+  
 
 module.exports = router
