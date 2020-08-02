@@ -22,6 +22,7 @@ var filterPost = async (type, req, res) => {
     $and: []
   }
 
+
   const spam = req.query.spam
   if (spam) {
     if (parseInt(spam) === 1)
@@ -33,8 +34,10 @@ var filterPost = async (type, req, res) => {
     filter['$and'].push({ spam: { $ne: true } })
   }
 
+  //if seeing on admin spam page
   if (req.url === '/spam') {
     filter['$and'].push({ spam: true })
+    path = 'admin/spam-cases-list'
   }
 
   // only pass accepted or further status' cases to ministry
@@ -88,12 +91,14 @@ var filterPost = async (type, req, res) => {
   let orderBy = req.query.orderBy || "new"
   let totalPages = 1
 
-  Case.countDocuments(filter, (err, count)=>{
+  Case.countDocuments(filter, async (err, count)=>{
     if (err) return err;
     //if zero records found
     if (count===0) {
       response.error = true
       response.message = "No records found for this query!"
+      const reminders = await Case.find({ resolvedAt: null, remindedAt: { $ne: null }, spam: { $ne: true } }).sort({ remindedAt: -1 }).limit(10)
+      response.reminders = reminders
       return res.render(path, response)
     }
     
@@ -118,8 +123,7 @@ var filterPost = async (type, req, res) => {
 
       if (type === "admin") {
         // find cases which are reminded but not resolved yet
-        const reminders = await Case.find({ resolvedAt: null, remindedAt: { $ne: null } }).sort({ remindedAt: -1 }).limit(10)
-        // console.log('reminders', reminders)
+        const reminders = await Case.find({ resolvedAt: null, remindedAt: { $ne: null }, spam: { $ne: true } }).sort({ remindedAt: -1 }).limit(10)
         response.reminders = reminders
         res.render(path, response)
       }

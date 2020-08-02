@@ -116,7 +116,7 @@ router.get('/cases', adminAuth, (req, res) => {
 // show spam cases
 router.get('/spam', adminAuth, (req, res) => {
   // req.query.spam = '1'
-  console.log(req)
+  // console.log(req)
   helpers.filter("admin", req, res)
 })
 
