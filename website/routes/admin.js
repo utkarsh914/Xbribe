@@ -113,6 +113,16 @@ router.get('/cases', adminAuth, (req, res) => {
 
 
 
+// show spam cases
+router.get('/spam', adminAuth, (req, res) => {
+  // req.query.spam = '1'
+  console.log(req)
+  helpers.filter("admin", req, res)
+})
+
+
+
+
 // admin dashboard having filter sort functions too
 router.get('/dashboard', adminAuth, async (req, res) => {
   let ministries = await Ministry.find({})

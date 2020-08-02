@@ -19,7 +19,22 @@ var filterPost = async (type, req, res) => {
 
   var filter = {
     // don't include spam cases by default
-    $and: [ { spam: { $ne: true } } ]
+    $and: []
+  }
+
+  const spam = req.query.spam
+  if (spam) {
+    if (parseInt(spam) === 1)
+      filter['$and'].push({ spam: true })
+    else
+      filter['$and'].push({ spam: { $ne: true } })
+  }
+  else {
+    filter['$and'].push({ spam: { $ne: true } })
+  }
+
+  if (req.url === '/spam') {
+    filter['$and'].push({ spam: true })
   }
 
   // only pass accepted or further status' cases to ministry
@@ -101,13 +116,17 @@ var filterPost = async (type, req, res) => {
       response.totalPages = totalPages
       response.posts = data
 
-      if (type==="admin") {
+      if (type === "admin") {
         // find cases which are reminded but not resolved yet
         const reminders = await Case.find({ resolvedAt: null, remindedAt: { $ne: null } }).sort({ remindedAt: -1 }).limit(10)
+        // console.log('reminders', reminders)
         response.reminders = reminders
         res.render(path, response)
       }
-      else res.render(path, response)
+      else {
+        console.log('Not admin')
+        res.render(path, response)
+      }
 
     }).catch(err=>{
       if (err) return res.render(path, response)
