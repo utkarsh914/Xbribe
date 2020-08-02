@@ -94,6 +94,13 @@ router.post('/', userAuth, async (req, res) => {
   try {
     var form = req.body
     console.log(form, '\n')
+    const caseId = req.signedCookies.caseId || await generateCaseID()
+    const { id: userId, email, agent } = req.user
+
+    //check for valid email
+    if (!['gmail', 'hotmail', 'yahoo', 'bing'].includes(email.split('@')[1].split('.')[0])) {
+    	throw new Error('Invalid email. Only emails on gmail, yahoo, hotmail, bing domains are accepted.')
+    }
 
     //check for spam from online model
     const params = { "message": form.description }
@@ -105,19 +112,15 @@ router.post('/', userAuth, async (req, res) => {
     })
     const isspam = response.data.isspam.toString()
     if (isspam === '1') {
-      req.flash('error_message', 'Your case was marked as spam and was not registered!')
-      res.clearCookie('token')
-      .clearCookie('caseId')
-      .redirect('/report/newuser')
-      return console.log('Case marked a spam')
-    }
-
-    const caseId = req.signedCookies.caseId || await generateCaseID()
-    const { id: userId, email, agent } = req.user
-
-    //check for valid email
-    if (!['gmail', 'hotmail', 'yahoo', 'bing'].includes(email.split('@')[1].split('.')[0])) {
-    	throw new Error('Invalid email. Only emails on gmail, yahoo, hotmail, bing domains are accepted.')
+      if (agent === 'app')
+        return res.status(400).json({ error: true, message: 'Your case was marked as spam and was not registered!' })
+      else {
+        req.flash('error_message', 'Your case was marked as spam and was not registered!')
+        res.clearCookie('token')
+        .clearCookie('caseId')
+        .redirect('/report/newuser')
+        return console.log('Case marked a spam')
+      }
     }
 
     //check for duplicate description
