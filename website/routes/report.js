@@ -104,7 +104,7 @@ router.post('/', userAuth, async (req, res) => {
 
     //check for spam from online model
     const params = new URLSearchParams()
-    params.append('message', 'madarchod')
+    params.append('message', form.description)
     const url = 'https://spamrandomclassifier.herokuapp.com/predict'
     const response = await axios.post(url, params , {
     	headers: {
