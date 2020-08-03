@@ -1,12 +1,12 @@
 # XBribe
-A bribery reporting app.
+A bribery reporting app focusing on bringing user privacy, user utility and administrator utility under one place. We hope this app serves the community to build a crime-free society.
 
 ## Features
 
     1)Instant case reporting.
     2)Checking reported cases.
     3)Getting live notification for : a)Case Updates
-                                      b)Communication from Administrator Sid
+                                      b)Communication from Administrator Side
     4)Saving cases as drafts to report later.
     5)Fetching information on bribery cases reported nearby.
     6)A unique secrecy focused utility feature: a)Secret Audio Recording
@@ -82,25 +82,31 @@ A bribery reporting app.
                     |   |-- CheckCaseFragment.java
                     |   |-- CheckCaseModel.java
                     |   |-- ImageApiService.java
-                    |-- drafts
-                    |   |-- DatabaseSaveDraft.java
-                    |   |-- DraftAdapter.java
-                    |   |-- DraftFragment.java
-                    |   |-- DraftModel.java
-                    |-- laws
-                    |   |-- LawsAdapter.java
-                    |   |-- LawsFragment.java
-                    |   |-- LawsModel.java
-                    |-- nearby
-                    |   |-- NearbyAdapter.java
-                    |   |-- NearbyFragment.java
-                    |   |-- NearbyViewModel.java
-                    |   |-- ImageApiService.java
                     |-- notification
                     |   |-- DatabaseHelperNotice.java
                     |   |-- NotificationAdapter.java
                     |   |-- NotificationFragment.java
                     |   |-- NotificationModel.java
+                    |-- drafts
+                    |   |-- DatabaseSaveDraft.java
+                    |   |-- DraftAdapter.java
+                    |   |-- DraftFragment.java
+                    |   |-- DraftModel.java
+                    |-- nearby
+                    |   |-- NearbyAdapter.java
+                    |   |-- NearbyFragment.java
+                    |   |-- NearbyViewModel.java
+                    |   |-- ImageApiService.java
+                    |-- laws
+                    |   |-- LawsAdapter.java
+                    |   |-- LawsFragment.java
+                    |   |-- LawsModel.java
+                    |--contact
+                    |   |-- ContactFragment.java
+                    |-- aboutus
+                    |   |-- AboutUsAdapter.java
+                    |   |-- AboutUsFragment.java
+                    |   |-- AboutUsModel.java
                 |-- MainActivity.java
                 |-- ReportFragment.java
                 |-- ReportFragmentViewModel.java
@@ -109,6 +115,6 @@ A bribery reporting app.
             |   |-- SplashActivity.java
             |-- MyApplication.java
         |-- Constants
-
-
-We hope this app serves the community to build a crime-free society. Apk can be found in app/build/outputs/apk/debug
+        
+        
+### Apk can be found in app/build/outputs/apk/debug
