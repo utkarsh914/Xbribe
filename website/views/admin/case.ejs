@@ -128,11 +128,14 @@
             <h3>Video Recordings:</h3>
             <div class="row my-3">
               <% c.videosArray.forEach((add) => { %>
-                <div class="col-md-6 xbribe-animate">
+                <div class="col-md-6 xbribe-animate d-flex">
                   <video width="100%" height="auto" controls>
                     <source src="<%= add %>" type="video/mp4">
                   </video>
-              </div>
+                  <a href="<%= add %>">
+                    <button class="btn btn-primary btn-round ml-2"><span class="fa fa-download"></span></button>
+                  </a>
+                </div>
               <% }) %>
             </div>
 
