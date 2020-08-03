@@ -11,6 +11,10 @@ The second dataset ("monthly_data2.csv") was created to show that the **same** m
 
 ![Model fit on monthly_data2](monthly2_modelfit.png)
 
+### Data Type: Time Series
+### Model used: Seasonal Autoregressive Integrated Moving Average (SARIMA)
+##### Hyperparameters (p,d,q) and (P,Q,D) chosen automatically by the code by choosing the one with minimum AIC score [m=12 for monthly data suggests a yearly seasonal cycle]
+
 
 
 
