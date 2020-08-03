@@ -30,7 +30,7 @@
 	        <ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a href="/" class="nav-link">Public Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="/admin/cases">See Cases</a></li>
-						<li class="nav-item"><a class="nav-link" href="/manage-ministry">Manage Ministries</a></li>
+						<li class="nav-item"><a class="nav-link" href="/admin/manage-ministry">Manage Ministries</a></li>
 	          <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
 	        </ul>
 	      </div>
@@ -60,6 +60,7 @@
 					</div>
 			
 					<div class="bg-white mycard p-2" id="notif-container">
+						<h4 class="text-center mb-3 mt-2"><strong>Reminders</strong></h4>
 						<!-- loop over all cases and render them -->
 						<% if (reminders.length) { %>
 							<% for (var i=0; i < reminders.length; i++) { %>

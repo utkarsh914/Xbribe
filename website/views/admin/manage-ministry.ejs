@@ -92,7 +92,7 @@
     <thead class="thead-ligh table-secondary">
       <tr>
         <th>Ministry</th>
-        <th>Edit</th>
+        <!-- <th>Edit</th> -->
         <th>Delete</th>
       </tr>
     </thead>
@@ -101,11 +101,11 @@
 
       <tr>
         <td class="align-middle"><%= ministry.ministryName %> (<b><%= ministry.ministryId %></b>)</td>
-        <td>
+        <!-- <td>
           <form method="post" action="/admin/manage-ministry/edit<%= ministry.ministryId %>">
             <button class="btn-form btn btn-outline-dark align-middle" type="submit">Edit</button>
           </form>
-        </td>
+        </td> -->
         <td>
           <form action="/admin/manage-ministry/del/<%= ministry.ministryId %>" method="post">
             <button class="btn-form btn btn-outline-danger align-middle" type="submit">Delete</button>
