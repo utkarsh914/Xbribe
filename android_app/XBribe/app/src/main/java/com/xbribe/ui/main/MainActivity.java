@@ -45,6 +45,7 @@ import com.xbribe.data.AppDataManager;
 import com.xbribe.service.AddressService;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.auth.AuthenticationActivity;
+import com.xbribe.ui.main.drawers.aboutus.AboutUsFragment;
 import com.xbribe.ui.main.drawers.checkcase.CheckcaseFragment;
 import com.xbribe.ui.main.drawers.contact.ContactFragment;
 import com.xbribe.ui.main.drawers.drafts.DraftFragment;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DraftFragment draftFragment;
     private NotificationFragment notificationFragment;
     private LawsFragment lawsFragment;
+    private AboutUsFragment aboutUsFragment;
 
     private static final int UPDATE_INTERVAL = 3000;
     private FusedLocationProviderClient locationProviderClient;
@@ -171,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         notificationFragment=new NotificationFragment();
         draftFragment=new DraftFragment();
         lawsFragment=new LawsFragment();
+        aboutUsFragment = new AboutUsFragment();
 
         initFrag(reportFragment);
 
@@ -376,18 +379,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_about)
         {
-            //initFrag(aboutUsFragment);
+            initFrag(aboutUsFragment);
         }
-        else
-            if(id== R.id.nav_draft)
-            {
-                initFrag(draftFragment);
-            }
-            else
-                if(id==R.id.nav_laws)
-                {
-                    initFrag(lawsFragment);
-                }
+        else if(id== R.id.nav_draft)
+        {
+            initFrag(draftFragment);
+        }
+        else if(id==R.id.nav_laws)
+        {
+            initFrag(lawsFragment);
+        }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
