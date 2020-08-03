@@ -1,6 +1,7 @@
 # Code Nebula
 
 ## Thirs party libraries, frameworks or APIs used.
+    All of them mentioned below are either open-source or free to use.
 
 ## For Website:
 
