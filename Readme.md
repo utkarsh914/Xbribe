@@ -38,6 +38,9 @@
 
 ### Image Slider by Smarteist
     https://github.com/smarteist/Android-Image-Slider
+    
+### Mock API for Image Fetching
+    https://5ee7467352bb0500161fd73a.mockapi.io/api/v1/images/image/
 
 ### Glide Library by Bumptech
     https://github.com/bumptech/glide
