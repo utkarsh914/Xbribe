@@ -6,7 +6,7 @@ A bribery reporting app focusing on bringing user privacy, user utility and admi
     1)Instant case reporting.
     2)Checking reported cases.
     3)Getting live notification for : a)Case Updates
-                                      b)Communication from Administrator Sid
+                                      b)Communication from Administrator Side
     4)Saving cases as drafts to report later.
     5)Fetching information on bribery cases reported nearby.
     6)A unique secrecy focused utility feature: a)Secret Audio Recording
