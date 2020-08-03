@@ -348,6 +348,6 @@ print(pred2)
 
 ## The model is ready
 
-## Additional hardcoding in the app.py file filters out random text (eg- knflkjsadlkjasgsfu) and some abusive words.
+## Additional hardcoding in the app.py file resulted in detection of random text (eg- knflkjsadlkjasgsfu) and some abusive words.
 
 
