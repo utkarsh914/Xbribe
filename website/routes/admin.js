@@ -135,9 +135,10 @@ router.get('/dashboard', adminAuth, async (req, res) => {
     const resolved = await Case.countDocuments({ ministryId: m.ministryId, status: 'resolved' })
     counts[m.ministryId] = { recieved, resolved }
   }
-  console.log(counts)
 
-  res.render('admin/admin-dashboard', { error: false, ministries: ministries, counts: counts })
+  const reminders = await Case.find({ resolvedAt: null, remindedAt: { $ne: null }, spam: { $ne: true } }).sort({ remindedAt: -1 }).limit(10)
+
+  res.render('admin/admin-dashboard', { error: false, ministries: ministries, counts: counts, reminders })
  }
  catch (e) {
    console.log(e)

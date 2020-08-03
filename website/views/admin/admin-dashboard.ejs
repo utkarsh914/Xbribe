@@ -47,7 +47,40 @@
           </div>
         </div>
       </div>
-    </section>
+		</section>
+		
+
+
+				<!-- notification panel start -->
+				<% if (reminders) { %>
+
+					<div class="fab mycard icon d-flex align-items-center justify-content-center" id="notification-fab">
+						<span class="fa fa-bell"></span>
+						<div class="count-badge mycard" id="count-badge"><%= reminders.length %></div>
+					</div>
+			
+					<div class="bg-white mycard p-2" id="notif-container">
+						<!-- loop over all cases and render them -->
+						<% if (reminders.length) { %>
+							<% for (var i=0; i < reminders.length; i++) { %>
+								<% var reminder = reminders[i] %>
+			
+								<div class="notification py-3 px-3 bg-light-" onClick="location.href='/admin/cases/case?id=<%= reminder.caseId %>'">
+									<h6 class="mb-1">Case ID: <%= reminder.caseId %></h6>
+									<p class="mb-0"><b>Dep:</b> <%= reminder.department %></p>
+									<p class="mb-0"><b>Place:</b> <%= reminder.place %>, <%= reminder.date.toLocaleString() %></p>
+									<p class="mb-0"><b>Last Reminded:</b> <%= reminder.remindedAt.toLocaleString() %></p>
+								</div>
+								<hr class="m-0">
+			
+						<% }} else { %>
+							<div class="alert alert-danger mb-2">No reminders</div>
+						<% } %>
+			
+					</div>
+		
+				<% } %>
+				<!-- notification panel end -->
 
 
 		<section class="xbribe-section bg-light xbribe-faqs">
@@ -139,7 +172,10 @@
 	<script src="/scripts/draw-admin-chart.js"></script>
   <script src="/js/main.js"></script>
 
-
+	<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-messaging.js"></script>
+	<script src="/scripts/firebase-config.js"></script>
+	<script src="/scripts/firebase-messaging.js"></script>
     
   </body>
 </html>
