@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for,request
+from flask import Flask,render_template,url_for,request,jsonify
 import pandas as pd 
 import pickle
 import re
@@ -10,7 +10,7 @@ from nltk.stem import WordNetLemmatizer
 # load the model from disk
 filename = 'nlp_model.pkl'
 clf = pickle.load(open(filename, 'rb'))
-cv=pickle.load(open('tranform.pkl','rb'))
+cv=pickle.load(open('transform.pkl','rb'))
 app = Flask(__name__)
 
 @app.route('/')
@@ -20,21 +20,29 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	if request.method == 'POST':
-		message = request.form['message']
+		message = request.form.to_dict()['message']
 		data = [message]
 		vect = cv.transform(data).toarray()
 		pred1 = clf.predict(vect)
 
+	if pred1==[1]:
+		my_prediction=[2]
+		return jsonify({ 'isspam': my_prediction[0] }), 200
+		#return render_template('result.html',prediction = my_prediction,msg=message)				#return statementfor spam
+
 	data = re.split(r'\W+', message)
-	hindi_galis=['madarchod','behenchod','bhosra','bhosri']
+	
+	abusive_words=['motherfuckers','madarchod','behenchod','bhosra','bhosri','bhosdike','motherfucker','slut','whore','bullshit']	#sincerest aplogies 
 
 	dicto={}
+	pred2=[0]	#initializaton
 	lemmatizer=WordNetLemmatizer()
 
 	for word in data:
 		word=word.lower()
-		if word in hindi_galis:
-			return render_template('result.html',prediction =[1],msg=message)
+		if word in abusive_words:
+			return jsonify({ 'isspam': 2 }), 200
+			#return render_template('result.html',prediction =[2],msg=message)			#return statement for abusive language
 		word=lemmatizer.lemmatize(word)
 	
 		if word not in words.words():
@@ -42,25 +50,22 @@ def predict():
 		
 		
 	if not dicto:
-		pred2=[0]
+		my_prediction=[0]									# return value for ham (all okay)
 
 	else:	
 		max_key = max(dicto, key=dicto.get)    
 			
-		if len(dicto)>5 or len(max_key)>20:
-			print('SPAM')
-			pred2=[1]
+		if len(dicto)>3 or len(max_key)>20:
+			print('Random text or spelling mistakes')
+			my_prediction=[1]								#return value for random text/spelling mistake																					
 		else:
-			print('HAM')
-			pred2=[0]
-
-	if pred1==[1] or pred2==[1]:
-		my_prediction=[1]
+			my_prediction=[0]								#return value for ham	(all okay)
 		
-	else:
-		my_prediction=[0]
+
+
     
-	return render_template('result.html',prediction = my_prediction,msg=message)
+	return jsonify({ 'isspam': my_prediction[0] }), 200
+	#return render_template('result.html',prediction = my_prediction,msg=message)
 
 
 
