@@ -30,9 +30,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.xbribe.R;
 import com.xbribe.data.AppDataManager;
 import com.xbribe.data.models.User;
@@ -75,6 +78,7 @@ public class LoginFragment extends Fragment
     private RegisterFragment registerFragment;
     private AuthenticationActivityViewModel viewModel;
     private AppDataManager appDataManager;
+    private String fcmToken;
 
     @Nullable
     @Override
@@ -86,10 +90,20 @@ public class LoginFragment extends Fragment
 
         appDataManager = ((MyApplication) getActivity().getApplicationContext()).getDataManager();
 
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(getActivity(), new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                fcmToken = instanceIdResult.getToken();
+                appDataManager.saveFCMToken(fcmToken);
+                Log.e("My FCM Token",fcmToken);
+            }
+        });
+
         registerFragment=new RegisterFragment();
 
-        if(appDataManager.getToken()!="")
+        if(!appDataManager.getToken().isEmpty())
         {
+            Toast.makeText(getActivity(), "Successfully Logged In", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getActivity(),MainActivity.class));
             getActivity().finish();
         }
@@ -101,6 +115,15 @@ public class LoginFragment extends Fragment
     public void onStart() {
         super.onStart();
 
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(getActivity(), new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                fcmToken = instanceIdResult.getToken();
+                appDataManager.saveFCMToken(fcmToken);
+                Log.e("My FCM Token",fcmToken);
+            }
+        });
+
         viewModel.getLoginResponse().observe(this,data-> {
             if(data==null)
             {
@@ -110,9 +133,7 @@ public class LoginFragment extends Fragment
             }
             else
             {
-
-                String msg="Logged In Successfully";
-                showSnackbar(msg);
+                Toast.makeText(getActivity(), "Successfully Logged In", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();
             }
@@ -142,7 +163,7 @@ public class LoginFragment extends Fragment
         {
             if(appDataManager.getFCMToken().isEmpty())
             {
-                String msg = "Please Wait!";
+                String msg = "Fetching FCM Token, please try later!";
                 showSnackbar(msg);
             }
             else {

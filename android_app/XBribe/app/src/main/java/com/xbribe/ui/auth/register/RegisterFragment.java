@@ -2,6 +2,7 @@ package com.xbribe.ui.auth.register;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.xbribe.R;
+import com.xbribe.data.AppDataManager;
 import com.xbribe.data.models.User;
+import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.auth.login.LoginFragment;
 import com.xbribe.ui.auth.AuthenticationActivityViewModel;
 
@@ -56,6 +62,8 @@ public class RegisterFragment extends Fragment
     private FragmentManager fragmentManager;
     private LoginFragment loginFragment;
     private AuthenticationActivityViewModel viewModel;
+    private String fcmToken;
+    private AppDataManager appDataManager;
 
     @Nullable
     @Override
@@ -65,7 +73,18 @@ public class RegisterFragment extends Fragment
         ButterKnife.bind(this,parent);
         viewModel= ViewModelProviders.of(getActivity()).get(AuthenticationActivityViewModel.class);
 
+        appDataManager = ((MyApplication) getActivity().getApplicationContext()).getDataManager();
+
         loginFragment= new LoginFragment();
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(getActivity(), new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                fcmToken = instanceIdResult.getToken();
+                appDataManager.saveFCMToken(fcmToken);
+                Log.e("My FCM Token",fcmToken);
+            }
+        });
 
         return parent;
     }
@@ -73,6 +92,15 @@ public class RegisterFragment extends Fragment
     @Override
     public void onStart() {
         super.onStart();
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(getActivity(), new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                fcmToken = instanceIdResult.getToken();
+                appDataManager.saveFCMToken(fcmToken);
+                Log.e("My FCM Token",fcmToken);
+            }
+        });
 
         viewModel.getRegisterResponse().observe(this, data->{
             if(data==null)

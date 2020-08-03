@@ -26,7 +26,6 @@ public class AuthenticationActivity extends AppCompatActivity
     private String fcmToken;
     private AppDataManager appDataManager;
 
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -49,7 +48,21 @@ public class AuthenticationActivity extends AppCompatActivity
             initFrag(loginFragment);
         }
 
-        private void initFrag(Fragment fragment) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                fcmToken = instanceIdResult.getToken();
+                appDataManager.saveFCMToken(fcmToken);
+                Log.e("My FCM Token",fcmToken);
+            }
+        });
+    }
+
+    private void initFrag(Fragment fragment) {
 
             FragmentTransaction ft = fragmentManager.beginTransaction();
             ft.replace(R.id.frame_main, fragment);
