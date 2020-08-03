@@ -35,7 +35,7 @@ var filterPost = async (type, req, res) => {
   // }
 
   //if seeing on admin spam page
-  console.log(req)
+  // console.log(req)
   if (req.url.split('?')[0] === '/spam') {
     filter['$and'].push({ spam: true })
     path = 'admin/spam-cases-list'
