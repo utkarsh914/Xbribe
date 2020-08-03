@@ -77,8 +77,8 @@
 								<div class="col-md-6 py-5">
 									<h4 class="mb-2"><b><%= i+1 %>.</b> <%= ministry.ministryName %></h4>
 									<h5 class="mb-2">ID: <%= ministry.ministryId %></h5>
-									<p><b>Recieved Today: </b> 27 </p>
-									<p><b>Resolved Today: </b> 11 </p>
+									<p><b>Recieved: </b> <%= counts[ministry.ministryId].recieved %> </p>
+									<p><b>Resolved: </b> <%= counts[ministry.ministryId].resolved %> </p>
 								</div>
 								<div class="col-md-6 py-3 px-4">
 									<canvas id="<%= ministry.ministryId %>"></canvas>

@@ -125,8 +125,24 @@ router.get('/spam', adminAuth, (req, res) => {
 
 // admin dashboard having filter sort functions too
 router.get('/dashboard', adminAuth, async (req, res) => {
-  let ministries = await Ministry.find({})
-  res.render('admin/admin-dashboard', { error: false, ministries: ministries })
+ try {
+  const ministries = await Ministry.find({})
+  const counts = {}
+  for (let i=0; i< ministries.length; i++) {
+    const m = ministries[i]
+    // cases reported for that ministry
+    const recieved = await Case.countDocuments({ ministryId: m.ministryId, status: { $ne: 'resolved' } })
+    const resolved = await Case.countDocuments({ ministryId: m.ministryId, status: 'resolved' })
+    counts[m.ministryId] = { recieved, resolved }
+  }
+  console.log(counts)
+
+  res.render('admin/admin-dashboard', { error: false, ministries: ministries, counts: counts })
+ }
+ catch (e) {
+   console.log(e)
+   res.send('Some error occured')
+ }
 })
 
 
