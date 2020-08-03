@@ -103,7 +103,7 @@ public class SecretFragment extends Fragment {
             record.setEnabled(false);
             stop.setEnabled(true);
         } catch (Exception e) {
-            Log.e("Audio Recorder",e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -117,7 +117,7 @@ public class SecretFragment extends Fragment {
             stop.setEnabled(false);
         } catch (Exception e)
         {
-            Log.e("Audio Recorder",e.getMessage());
+            e.printStackTrace();
         }
     }
 }
