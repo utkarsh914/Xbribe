@@ -103,13 +103,20 @@ router.post('/', userAuth, async (req, res) => {
     }
 
     //check for spam from online model
-    const params = { "message": form.description }
+    const params = new URLSearchParams()
+    params.append('message', form.description)
     const url = 'https://spamrandomclassifier.herokuapp.com/predict'
-    const response = await axios.post(url, params, {
-      "headers": {
-        "content-type": "application/json"
-      }
+    const response = await axios.post(url, params , {
+    	headers: {
+    		"content-type": "application/x-www-form-urlencoded"
+    	}
     })
+    // const params = { "message": form.description }
+    // const response = await axios.post(url, params, {
+    //   "headers": {
+    //     "content-type": "application/json"
+    //   }
+    // })
     const isspam = response.data.isspam.toString()
     if (isspam === '1') console.log('case was marked as low priority')
     else if (isspam === '2') console.log('case was marked as spam with low priority')

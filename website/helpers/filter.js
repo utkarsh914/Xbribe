@@ -40,6 +40,9 @@ var filterPost = async (type, req, res) => {
     filter['$and'].push({ spam: true })
     path = 'admin/spam-cases-list'
   }
+  else {
+    filter['$and'].push({ spam: { $ne: true } })
+  }
 
   // only pass accepted or further status' cases to ministry
   if (type === 'ministry')
