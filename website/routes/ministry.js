@@ -35,6 +35,27 @@ router.get('/dashboard', ministryAuth, (req, res) => {
 
 
 
+// generate case data archive and send the link
+router.post('/savefcmtoken', ministryAuth, async (req, res) => {
+  const fcmToken = req.body.fcmToken
+  console.log('Received token: ', fcmToken)
+  
+  if (!req.user) {
+    return res.status(400).send('Error')
+  }
+
+  const m = await Ministry.findOne({ ministryId: req.user.ministryId })
+  if (m) {
+    m.fcmToken = fcmToken
+    await m.save()
+    console.log('Saved token')
+    res.status(200).send('Token Saved')
+  }
+})
+
+
+
+
 // login form
 router.get('/login', (req, res) => {
   res.render('ministry/ministry-login')

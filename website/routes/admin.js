@@ -230,6 +230,28 @@ router.get('/manage/case', adminAuth, async (req, res) => {
     }
     else console.log(`Can't send a notification, no FCM TOKEN exists`)
 
+
+    //send fcm to ministry if case was accepted
+    if (req.query.status === 'accepted') {
+      const ministryFcmToken = (await Ministry.findOne({ ministryId: updatedCase.ministryId})).fcmToken
+      if (ministryFcmToken) {
+        helpers.sendFCM({
+          title: `New case reported: ${updatedCase.caseId}`,
+          body: `Dep: ${updatedCase.department}\nPlace: ${updatedCase.place}, ${updatedCase.date.toLocaleDateString()}`,
+          click_action: `/admin/cases/case?id=${updatedCase.caseId}`,
+          icon: "/images/Xbribe_logo.png"
+        },
+        {
+          case: JSON.stringify(updatedCase)
+        },
+        ministryFcmToken, 'notification')
+        .then(response => {
+          console.log(response)
+        })
+        .catch(err => console.log(`Can't send notification to ADMIN: `, err))
+      }
+    }
+
     res.redirect(`/admin/cases/case?id=${id}`)
   }
   catch (e) {
@@ -320,6 +342,9 @@ router.post('/savefcmtoken', async (req, res) => {
     res.status(200).send('Token Saved')
   }
 })
+
+
+
 
 // endpoint to send data for drawing the chart on public portal
 router.get('/chartdata', async (req, res) => {

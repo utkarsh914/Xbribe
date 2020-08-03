@@ -95,7 +95,7 @@ var filterPost = async (type, req, res) => {
   let orderBy = req.query.orderBy || "new"
   let totalPages = 1
 
-  console.log(filter)
+  // console.log(filter)
   Case.countDocuments(filter, async (err, count)=>{
     if (err) return err;
     //if zero records found
