@@ -126,7 +126,6 @@ public class OTPVerifyFragment extends Fragment{
                         {
                             Log.e("Cases Reported Table","Data inserted");
                         }
-
                         String msg = "Reported Successfully";
                         showSnackbar(msg);
                         startActivity(new Intent(getActivity(), MainActivity.class));
@@ -135,9 +134,7 @@ public class OTPVerifyFragment extends Fragment{
                 });
             }
         });
-
     }
-
     @OnClick(R.id.tv_resend)
     void setTvResend()
     {

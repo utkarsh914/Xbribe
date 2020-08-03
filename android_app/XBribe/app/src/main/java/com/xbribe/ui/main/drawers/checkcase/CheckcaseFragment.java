@@ -128,7 +128,6 @@ public class CheckcaseFragment extends  Fragment
     {
             caselist = new ArrayList<>();
             int i=0;
-            //cursor.moveToPosition(cursor.getCount());
             cursor.moveToPosition(cursor.getCount());
             while (cursor.moveToPrevious())
             {
@@ -138,8 +137,11 @@ public class CheckcaseFragment extends  Fragment
                  i++;
                  nocases.setVisibility(View.INVISIBLE);
                  flag=1;
+                 if(i>=5)
+                 {
+                     i=0;
+                 }
              }
-
             }
             if(flag!=1)
             {

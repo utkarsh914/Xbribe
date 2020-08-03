@@ -89,7 +89,6 @@ public class CheckCaseAdapter extends RecyclerView.Adapter<CheckCaseAdapter.View
         @BindView(R.id.tv_date)
         TextView date;
 
-
         public ViewHolder(@NonNull View itemView)
         {
             super(itemView);

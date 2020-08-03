@@ -61,6 +61,7 @@ public class SubmissionActivityViewModel extends AndroidViewModel {
               if (response.code() < 300) {
                   Log.e("CASE","Reported");
                   caseResponse.postValue(response.body());
+                  Log.e("RESPONSE","RES"+response.body());
               }
               else {
                   Log.e("CASE","Not Reported");

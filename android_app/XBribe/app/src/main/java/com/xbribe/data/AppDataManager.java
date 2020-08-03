@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.xbribe.data.api.ApiHelper;
 import com.xbribe.data.models.CaseData;
+import com.xbribe.data.models.CaseResponse;
 import com.xbribe.data.models.NearbyCaseResponse;
 import com.xbribe.data.models.OrganizationResponse;
 import com.xbribe.data.models.TokenResponse;
