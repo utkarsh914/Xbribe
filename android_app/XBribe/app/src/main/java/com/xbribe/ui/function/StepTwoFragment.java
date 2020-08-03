@@ -367,7 +367,7 @@ public class StepTwoFragment extends Fragment
                                 hideProgress();
                                 if (task.isSuccessful()) {
                                     hideProgress();
-                                    String msg="Uploaded Successfully";
+                                    String msg="Uploaded Audio Successfully";
                                     showSnackbar(msg);
                                     Uri downloadUri = task.getResult();
                                     String audURL = downloadUri.toString();
@@ -379,6 +379,7 @@ public class StepTwoFragment extends Fragment
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        hideProgress();
                         String msg="Not Uploaded";
                         showSnackbar(msg);
                     }
@@ -410,9 +411,6 @@ public class StepTwoFragment extends Fragment
                 videoTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        String msg="Uploaded Successfully";
-                        showSnackbar(msg);
-
                         Task<Uri> urlTask = videoTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                             @Override
                             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -427,6 +425,9 @@ public class StepTwoFragment extends Fragment
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 if (task.isSuccessful()) {
+                                    hideProgress();
+                                    String msg="Uploaded Video Successfully";
+                                    showSnackbar(msg);
                                     Uri downloadUri = task.getResult();
                                     String vidURL = downloadUri.toString();
                                     videoURL.add(vidURL);
@@ -438,8 +439,14 @@ public class StepTwoFragment extends Fragment
 
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        hideProgress();
                         String msg="Not uploaded";
                         showSnackbar(msg);
+                    }
+                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                        showProgress();
                     }
                 });
             }

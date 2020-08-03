@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,9 @@ public class OTPVerifyFragment extends Fragment{
 
     @BindView(R.id.otp_constraint_layout)
     ConstraintLayout otponstraintLayout;
+
+    @BindView(R.id.pb_submit)
+    ProgressBar pbSubmit;
 
     private int imageCount,audioCount,videoCount;
     private  String name,city,pincode,ministryId,department,description,address,latitude,longitude,officialName,ministry,date ;
@@ -102,6 +106,7 @@ public class OTPVerifyFragment extends Fragment{
     @OnClick(R.id.btn_submit)
     void setBtnSubmit()
     {
+        showProgress();
         Integer otp = Integer.valueOf(otpValue.getValue());
         submissionActivityViewModel.checkOTP(otp);
         submissionActivityViewModel.getVerifyOtp().observe(this, data->{
@@ -116,12 +121,14 @@ public class OTPVerifyFragment extends Fragment{
                 {
                     if(res == null)
                     {
+                        hideProgress();
                         String msg="Error. Please try again!";
                         showSnackbar(msg);
                     }
                     else
                     {
-                        boolean ifInserted= databaseHelper.insertData(appDataManager.getToken(),address,description,ministry,department,name,imageCount,audioCount,videoCount,res.getStatus(),res.getCaseId(),appDataManager.getID(),appDataManager.getEmail(),officialName,date);
+                        hideProgress();
+                        boolean ifInserted= databaseHelper.insertData(appDataManager.getToken(),address,description,ministry,department,name,imageCount,audioCount,videoCount,"STATUS","CASEID",appDataManager.getID(),appDataManager.getEmail(),officialName,date);
                         if(ifInserted==true)
                         {
                             Log.e("Cases Reported Table","Data inserted");
@@ -156,5 +163,13 @@ public class OTPVerifyFragment extends Fragment{
     {
         Snackbar snackbar= Snackbar.make(otponstraintLayout,msg,Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+
+    public void showProgress() {
+        pbSubmit.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress() {
+        pbSubmit.setVisibility(View.GONE);
     }
 }
