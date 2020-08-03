@@ -123,6 +123,14 @@ router.get('/spam', adminAuth, (req, res) => {
 
 
 
+// forecast
+router.get('/forecast', adminAuth, (req, res) => {
+  res.render('admin/forecast')
+})
+
+
+
+
 // admin dashboard having filter sort functions too
 router.get('/dashboard', adminAuth, async (req, res) => {
  try {
