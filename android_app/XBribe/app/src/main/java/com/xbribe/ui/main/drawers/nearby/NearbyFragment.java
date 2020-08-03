@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,6 +46,9 @@ public class NearbyFragment extends Fragment {
     @BindView(R.id.btn_100000m)
     MaterialButton button100000;
 
+    @BindView(R.id.tv_nearby_cases)
+    TextView tvNoNearbyCases;
+
     private AppDataManager appDataManager;
     private NearbyViewModel nearbyViewModel;
     private NearbyAdapter nearbyAdapter;
@@ -69,12 +73,13 @@ public class NearbyFragment extends Fragment {
         nearbyViewModel.getNearbyCaseResponse().observe(this,data->{
             if(data!=null)
             {
+                tvNoNearbyCases.setVisibility(View.GONE);
                 mNearbyCases = data;
                 initRecyclerView(mNearbyCases);
             }
             else
             {
-
+                tvNoNearbyCases.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -83,28 +88,28 @@ public class NearbyFragment extends Fragment {
     void click500()
     {
         progressBar.setVisibility(View.VISIBLE);
-        nearbyViewModel.getNearbyCases(appDataManager.getToken(),22.572645,88.363892,500);
+        nearbyViewModel.getNearbyCases(appDataManager.getToken(),Double.valueOf(appDataManager.getLatitude()),Double.valueOf(appDataManager.getLongitude()),500);
     }
 
     @OnClick(R.id.btn_1000m)
     void click1000()
     {
         progressBar.setVisibility(View.VISIBLE);
-        nearbyViewModel.getNearbyCases(appDataManager.getToken(),22.572645,88.363892,1000);
+        nearbyViewModel.getNearbyCases(appDataManager.getToken(),Double.valueOf(appDataManager.getLatitude()),Double.valueOf(appDataManager.getLongitude()),1000);
     }
 
     @OnClick(R.id.btn_10000m)
     void click10000()
     {
         progressBar.setVisibility(View.VISIBLE);
-        nearbyViewModel.getNearbyCases(appDataManager.getToken(),22.572645,88.363892,10000);
+        nearbyViewModel.getNearbyCases(appDataManager.getToken(),Double.valueOf(appDataManager.getLatitude()),Double.valueOf(appDataManager.getLongitude()),10000);
     }
 
     @OnClick(R.id.btn_100000m)
     void click100000()
     {
         progressBar.setVisibility(View.VISIBLE);
-        nearbyViewModel.getNearbyCases(appDataManager.getToken(),22.572645,88.363892,100000);
+        nearbyViewModel.getNearbyCases(appDataManager.getToken(),Double.valueOf(appDataManager.getLatitude()),Double.valueOf(appDataManager.getLongitude()),50000);
     }
 
     private void initRecyclerView(List<NearbyCaseResponse> mNearbyCases)
