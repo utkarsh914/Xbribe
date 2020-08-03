@@ -19,14 +19,14 @@
             android:icon="@drawable/ic_baseline_notifications_active_24"
             android:title="Case Updates"/>
         <item
-            android:id="@+id/nav_nearby"
-            android:icon="@drawable/ic_baseline_location_on_24"
-            android:title="Nearby Cases"/>
-        <item
             android:id="@+id/nav_draft"
             android:icon="@drawable/ic_baseline_drafts_24"
             android:title="Saved drafts"
             />
+        <item
+            android:id="@+id/nav_nearby"
+            android:icon="@drawable/ic_baseline_location_on_24"
+            android:title="Nearby Cases"/>
         <item
             android:id="@+id/nav_laws"
             android:icon="@drawable/ic_baseline_format_list_bulleted_24"

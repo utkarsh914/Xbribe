@@ -46,6 +46,7 @@ import com.xbribe.service.AddressService;
 import com.xbribe.ui.MyApplication;
 import com.xbribe.ui.auth.AuthenticationActivity;
 import com.xbribe.ui.main.drawers.checkcase.CheckcaseFragment;
+import com.xbribe.ui.main.drawers.contact.ContactFragment;
 import com.xbribe.ui.main.drawers.drafts.DraftFragment;
 import com.xbribe.ui.main.drawers.laws.LawsFragment;
 import com.xbribe.ui.main.drawers.nearby.NearbyFragment;
@@ -77,12 +78,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ReportFragment reportFragment;
     private CheckcaseFragment checkcaseFragment;
     private NearbyFragment nearbyFragment;
-
+    private ContactFragment contactFragment;
     private DraftFragment draftFragment;
     private NotificationFragment notificationFragment;
     private LawsFragment lawsFragment;
-
-
 
     private static final int UPDATE_INTERVAL = 3000;
     private FusedLocationProviderClient locationProviderClient;
@@ -168,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         checkcaseFragment=new CheckcaseFragment();
         reportFragment = new ReportFragment();
         nearbyFragment=new NearbyFragment();
-
+        contactFragment=new ContactFragment();
         notificationFragment=new NotificationFragment();
         draftFragment=new DraftFragment();
         lawsFragment=new LawsFragment();
@@ -373,7 +372,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_contact)
         {
-            //initFrag(contactFragment);
+            initFrag(contactFragment);
         }
         else if (id == R.id.nav_about)
         {
