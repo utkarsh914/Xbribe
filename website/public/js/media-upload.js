@@ -120,7 +120,7 @@ async function batchUpload(caseId, fileType, fileArray) {
   if (!(fileType==='Pics' || fileType==='Audios' || fileType==='Videos')) return
   
   //change button status to upload success and remove onclick event listener
-  $(`#upload${fileType}Button`).html('Uploading Pictures..')
+  $(`#upload${fileType}Button`).html('Uploading ..')
   //loop over all files and upload one by one
   for (let i = 0; i < fileArray.length; i++) {
     let path = `${caseId}/${fileType}/${fileArray[i].name}`
