@@ -114,10 +114,13 @@
             <h3>Audio Recordings:</h3>
             <div class="row mt-3">
               <% c.audiosArray.forEach((add) => { %>
-                <div class="col-lg-6 xbribe-animate">
+                <div class="col-lg-6 xbribe-animate d-flex">
                   <audio controls>
                     <source src="<%= add %>" type="audio/mpeg">
                   </audio>
+                  <a href="<%= add %>">
+                    <button class="btn btn-primary btn-round ml-2"><span class="fa fa-download"></span></button>
+                  </a>
                 </div>
               <% }) %>
             </div>
