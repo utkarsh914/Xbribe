@@ -2,8 +2,9 @@
   "name": "bribery",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "website/index.js",
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "cookie-encrypter": "^1.0.1",
@@ -23,8 +24,9 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node website/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Utkarsh Tiwari",
+  "author": "Code Nebula",
   "license": "MIT"
 }
