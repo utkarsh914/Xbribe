@@ -40,24 +40,24 @@
  
 # Screenshots
 
-![landing-page](public/screenshots/landing-page.png)
+![landing-page](public/images/screenshots/landing-page.png)
 
-![report-options](public/screenshots/report-options.png)
+![report-options](public/images/screenshots/report-options.png)
 
-![why-report](public/screenshots/why-report.png)
+![why-report](public/images/screenshots/why-report.png)
 
-![graph](public/screenshots/graph.png)
+![graph](public/images/screenshots/graph.png)
 
-![public](public/screenshots/public.png)
+![public](public/images/screenshots/public.png)
 
-![admin-dashboard](public/screenshots/admin-dashboard.png)
+![admin-dashboard](public/images/screenshots/admin-dashboard.png)
 
-![ministry-stats](public/screenshots/ministry-stats.png)
+![ministry-stats](public/images/screenshots/ministry-stats.png)
 
-![forecast](public/screenshots/forecast.png)
+![forecast](public/images/screenshots/forecast.png)
 
-![spam](public/screenshots/spam.png)
+![spam](public/images/screenshots/spam.png)
 
-![case-1](public/screenshots/case-1.png)
+![case-1](public/images/screenshots/case-1.png)
 
-![case-2](public/screenshots/case-2.png)
+![case-2](public/images/screenshots/case-2.png)
