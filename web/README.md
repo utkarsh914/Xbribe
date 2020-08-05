@@ -41,23 +41,23 @@
 # Screenshots
 
 ![landing-page](public/images/screenshots/landing-page.png)
-
+***
 ![report-options](public/images/screenshots/report-options.png)
-
+***
 ![why-report](public/images/screenshots/why-report.png)
-
+***
 ![graph](public/images/screenshots/graph.png)
-
+***
 ![public](public/images/screenshots/public.png)
-
+***
 ![admin-dashboard](public/images/screenshots/admin-dashboard.png)
-
+***
 ![ministry-stats](public/images/screenshots/ministry-stats.png)
-
+***
 ![forecast](public/images/screenshots/forecast.png)
-
+***
 ![spam](public/images/screenshots/spam.png)
-
+***
 ![case-1](public/images/screenshots/case-1.png)
-
+***
 ![case-2](public/images/screenshots/case-2.png)
