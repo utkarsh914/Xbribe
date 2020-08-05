@@ -83,3 +83,10 @@
 
 ### Hidden Camera by Keval Patel 
     https://github.com/kevalpatel2106/android-hidden-camera
+
+
+## Note: To enable firebase notifications
+	1. Configure /public/scripts/firebase-config.js as per your credentials
+	2. Configure PublicVapidKey in /public/scripts/firebase-messaging.js on line 11.
+	3. Put your firebase-admin-sdk config in /firebase and import in /helpers/sendFCM on line 3.
+	4. Now you're good to go.
