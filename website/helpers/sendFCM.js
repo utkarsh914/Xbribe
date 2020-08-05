@@ -1,5 +1,6 @@
 var admin = require("firebase-admin");
-var serviceAccount = require("../firebase/xbribe-d0a3d-firebase-adminsdk-vcj0a-25d8c553b6.json")
+// import your private key
+var serviceAccount = require("../firebase/firebase-adminsdk.json")
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
