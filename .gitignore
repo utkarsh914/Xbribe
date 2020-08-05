@@ -1,22 +1,26 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/website/node_modules
+/web/node_modules
 /node_modules
-/website/public/uploads
+/web/public/uploads
 #/firebase
-/website/.pnp
-/website/.pnp.js
-/website/.env
+/web/.pnp
+/web/.pnp.js
+/web/.env
 .env
 
 # misc
-/website/.DS_Store
-/website/.env.local
-/website/.env.development.local
-/website/.env.test.local
-/website/.env.production.local
+/web/.DS_Store
+/web/.env.local
+/web/.env.development.local
+/web/.env.test.local
+/web/.env.production.local
 
-/website/npm-debug.log*
-/website/yarn-debug.log*
-/website/yarn-error.log*
+/web/npm-debug.log*
+/web/yarn-debug.log*
+/web/yarn-error.log*
+
+# firebase files
+/others
+/android_app/XBribe/app/google-services.json
