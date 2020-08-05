@@ -38,3 +38,26 @@
  This helps the authority to vitualise the overall progress of the bribery reporting system.
  
  
+# Screenshots
+
+![landing-page](public/screenshots/landing-page.png)
+
+![report-options](public/screenshots/report-options.png)
+
+![why-report](public/screenshots/why-report.png)
+
+![graph](public/screenshots/graph.png)
+
+![public](public/screenshots/public.png)
+
+![admin-dashboard](public/screenshots/admin-dashboard.png)
+
+![ministry-stats](public/screenshots/ministry-stats.png)
+
+![forecast](public/screenshots/forecast.png)
+
+![spam](public/screenshots/spam.png)
+
+![case-1](public/screenshots/case-1.png)
+
+![case-2](public/screenshots/case-2.png)
