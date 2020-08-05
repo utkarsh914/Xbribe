@@ -61,3 +61,15 @@
 ![case-1](public/images/screenshots/case-1.png)
 ***
 ![case-2](public/images/screenshots/case-2.png)
+***
+
+
+### Following environment variables are used in the project
+	1. COOKIE_PARSER_SECRET
+	2. COOKIE_ENCRYPTER_SECRET
+	3. SESSION_SECRET
+	4. JWT_SECRET
+	5. NODEMAILER_EMAIL
+	6. NODEMAILER_PASSWORD
+	7. OUR_EMAIL
+	8. FCM_DatabaseURL
