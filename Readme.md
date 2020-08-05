@@ -86,6 +86,7 @@
 
 
 ## Note: To enable firebase notifications in website and app
+	1. For notifications on android app, place your google-services.json file in android_app/XBribe/app/<-here->
 	1. Configure web/public/scripts/firebase-config.js as per your credentials
 	2. Configure PublicVapidKey in web/public/scripts/firebase-messaging.js on line 11 [for notifications on web].
 	3. Put your firebase-admin-sdk config in web/configs/ and import in web/helpers/sendFCM on line 3.
