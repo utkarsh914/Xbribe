@@ -1,6 +1,8 @@
 # XBribe
 A bribery reporting app focusing on bringing user privacy, user utility and administrator utility under one place. We hope this app serves the community to build a crime-free society.
 
+#### Download the apk file from [XBribe](http://bit.ly/apkxbribe)
+
 ## Features
 
     1)Instant case reporting.
@@ -116,5 +118,3 @@ A bribery reporting app focusing on bringing user privacy, user utility and admi
             |-- MyApplication.java
         |-- Constants
         
-        
-### Apk can be found in app/build/outputs/apk/debug
