@@ -62,7 +62,7 @@ router.post('/stats/dropall', (req, res)=>{
 
 
 //add random users
-router.post('/users', async (req, res)=>{
+router.post('/users', async (req, res) => {
 	let n = parseInt(req.body.number)
 
 	for (let i=0; i<n; i++) {
@@ -84,7 +84,7 @@ router.post('/cases/setresolved', async (req, res)=>{
 	if (number > cases.length) number = cases.length
 
 	for(let i=0; i<number; i++) {
-		let index = faker.random.number({ min: 0, max: cases.length-1 })
+		let index = faker.datatype.number({ min: 0, max: cases.length-1 })
 		let c = cases[index]
 		await Case.findOneAndUpdate({_id: c.id}, {
 			status: 'resolved',
@@ -100,7 +100,7 @@ router.post('/cases/setresolved', async (req, res)=>{
 				}).save()
 			}
 			else {
-				await DailyStats.findOneAndUpdate({ date: currentDate }, { $inc: { resolved: 1 } }, {new: true })
+				await DailyStats.findOneAndUpdate({ date: currentDate }, { $inc: { resolved: 1 } }, { new: true })
 			}
 		})
 	}
@@ -117,11 +117,11 @@ router.post('/cases/setstatus', async (req, res)=>{
 	if (number > cases.length) number = cases.length
 
 	for(let i=0; i<number; i++) {
-		let index = faker.random.number({ min: 0, max: cases.length-1 })
+		let index = faker.datatype.number({ min: 0, max: cases.length-1 })
 		let c = cases[index]
 		if (c.status !== 'resolved') {
 			await Case.findOneAndUpdate({_id: c.id}, {
-				status: allowedStatuses[faker.random.number({ min: 0, max: 2})]
+				status: allowedStatuses[faker.datatype.number({ min: 0, max: 2})]
 			})
 		}
 	}
@@ -552,19 +552,19 @@ router.post('/cases', async (req, res)=>{
 			})
 		}
 
-		let user = users[faker.random.number({ min: 0, max: users.length-1 })]
-		let mini = ministries[faker.random.number({ min: 0, max: ministries.length-1 })]
+		let user = users[faker.datatype.number({ min: 0, max: users.length-1 })]
+		let mini = ministries[faker.datatype.number({ min: 0, max: ministries.length-1 })]
 		let ministryId = mini.ministryId
 		let department
 		if (mini.departments.length) {
-			department = mini.departments[faker.random.number({ min: 0, max: mini.departments.length-1 })]
+			department = mini.departments[faker.datatype.number({ min: 0, max: mini.departments.length-1 })]
 		}
 		else department = "None"
 		
 
 		var picsArray = []
 		//get url of some random real images and push to picsArray
-		for (let j=0; j<faker.random.number({ min: 2, max: 5 }); j++){
+		for (let j=0; j<faker.datatype.number({ min: 2, max: 5 }); j++){
 			picsArray.push(`http://lorempixel.com/800/480/`)
 		}
 
@@ -580,14 +580,14 @@ router.post('/cases', async (req, res)=>{
 			coordinates: {
 				type: "Point",
 				//longi, lati
-				coordinates: [faker.random.number({ min: 72.00, max: 85.00 }), faker.random.number({ min: 19.00, max: 28.00 })]
+				coordinates: [faker.datatype.number({ min: 72.00, max: 85.00 }), faker.datatype.number({ min: 19.00, max: 28.00 })]
 			},
 			location: {
 				address: faker.address.streetAddress(),
 				pin: faker.address.zipCode(),
 				district: faker.address.city()
 			},
-			description: faker.random.words(faker.random.number({ min: 80, max: 200 })),
+			description: faker.random.words(faker.datatype.number({ min: 80, max: 200 })),
 			picsArray: picsArray,
 			audiosArray: [],
 			videosArray: [],
