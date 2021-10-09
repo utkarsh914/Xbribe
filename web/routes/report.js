@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const axios = require('axios')
+const { v4: uuid } = require("uuid")
 // auth middleware
 const { userAuth } = require('../middleware/auth')
 // cookie config
@@ -424,18 +425,8 @@ router.post('/verifyotp', async (req, res) => {
 
 
 // fn to get a random unused case ID
-async function generateCaseID () {
-	let flag = true
-	let caseId
-	while (flag) {
-		// generate a random case ID
-		caseId = Math.random().toString(36).substr(2, 10).toUpperCase()
-		await Case.findOne({ caseId: caseId }, (err, found) => {
-			if (err) return err
-			if (!found) flag = false
-		})
-	}
-	return caseId
+const generateCaseID = () => {
+	return uuid();
 }
 
 

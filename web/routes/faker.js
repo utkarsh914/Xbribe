@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs');
+const { v4: uuid } = require("uuid");
 
 const faker = require('faker')
 faker.locale = 'en_IND'
@@ -542,16 +543,7 @@ router.post('/cases', async (req, res)=>{
 
 	for (let i=1; i<n+1 ; i++) {
 
-		let flag = true;
-		let caseId;
-		while (flag) {
-			caseId = Math.random().toString(36).substr(2, 10).toUpperCase();
-			await Case.findOne({caseId: caseId}, (err, found)=>{
-				if (err) return err;
-				if (!found) flag = false;
-			})
-		}
-
+		let caseId = generateCaseID();
 		let user = users[faker.datatype.number({ min: 0, max: users.length-1 })]
 		let mini = ministries[faker.datatype.number({ min: 0, max: ministries.length-1 })]
 		let ministryId = mini.ministryId
@@ -618,9 +610,14 @@ router.post('/cases', async (req, res)=>{
 
 
 //function to check login
-function isLoggedIn(req, res, next){
+function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated() && req.user.adminId === 'admin') next()
 	else res.redirect("/admin/login")
+}
+
+// fn to get a random unused case ID
+const generateCaseID = () => {
+	return uuid();
 }
 
 module.exports = router;

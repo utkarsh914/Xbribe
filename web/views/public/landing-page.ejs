@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Xbribe | Home</title>
-    <meta charset="utf-8">
+	<head>
+		<title>Xbribe | Home</title>
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="icon" href="images/Xbribe_logo.png" type="image/x-icon">
-    
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+		
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/magnific-popup.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
 
-	  <!-- loader -->
+		<!-- loader -->
 		<div id="xbribe-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 		<nav class="navbar navbar-expand-lg navbar-dark xbribe_navbar bg-dark xbribe-navbar-light" id="xbribe-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="/">Xbribe</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#xbribe-nav" aria-controls="xbribe-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="xbribe-nav">
-	        <ul class="navbar-nav ml-auto">
+			<div class="container">
+				<a class="navbar-brand" href="/">Xbribe</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#xbribe-nav" aria-controls="xbribe-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="fa fa-bars"></span> Menu
+				</button>
+				<div class="collapse navbar-collapse" id="xbribe-nav">
+					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="/public">Public Portal</a></li>
-	          <li class="nav-item"><a class="nav-link" href="/ministry">Ministry Login</a></li>
-	          <li class="nav-item"><a class="nav-link" href="/admin">Admin Login</a></li>
-	          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+						<li class="nav-item"><a class="nav-link" href="/ministry">Ministry Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="/admin">Admin Login</a></li>
+						<li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 		<!-- END nav -->
 		
-    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheigh align-items-center justify-content-center py-5" data-scrollax-paren="true" style="min-height: 100vh;">
-          <div class="col-md-11 xbribe-animate text-center">
+		<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text js-fullheigh align-items-center justify-content-center py-5" data-scrollax-paren="true" style="min-height: 100vh;">
+					<div class="col-md-11 xbribe-animate text-center">
 
 						<% if (error_message.length) { %>
 							<% error_message.forEach(msg => { %>
@@ -61,143 +61,143 @@
 							<% }) %>
 						<% } %>
 
-          	<img src= "images/Xbribe_logo.png" style="max-width: 250px;">
-          	<h1 class="mb-4 text-dark">Xbribe</h1>
-            <p class="mb-5"><a href="#" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+						<img src= "images/Xbribe_logo.png" style="max-width: 250px;">
+						<h1 class="mb-4 text-dark">Xbribe</h1>
+						<p class="mb-5"><a href="#" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <section class="xbribe-section bg-light xbribe-no-pt xbribe-intro">
-    	<div class="container">
-    		<div class="row">
-          <div class="col-md-4 d-flex align-self-stretch px-4 xbribe-animate m-md-0 mb-5">
-            <div class="d-block services activeee text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-            		<span><img src="images/m1.png"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Register Complaint</h3>
-                <p>Did witness something illegal? Easily register a complaint on this portal.</p>
-                <a href="/report/newuser" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch px-4 xbribe-animate m-md-0 my-5">
-            <div class="d-block services text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-            		<span><img src="images/m2.png"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Track Complaint</h3>
-                <p>Filed a complaint before? Track the status of the previous complaints.</p>
-                <a href="/status" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch px-4 xbribe-animate m-md-0 mt-5">
-            <div class="d-block services text-center">
-              <div class="icon d-flex align-items-center justify-content-center">
-            		<span><img src="images/m3.png"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Send Reminder</h3>
-                <p>Filed a complaint before and it didn't resolve? Send us a reminder to notify us to immediately look into the case.</p>
-                <a href="/remind" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
-              </div>
-            </div>      
-          </div>
-        </div>
-    	</div>
-    </section>
+		<section class="xbribe-section bg-light xbribe-no-pt xbribe-intro">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 d-flex align-self-stretch px-4 xbribe-animate m-md-0 mb-5">
+						<div class="d-block services activeee text-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span><img src="images/m1.png"></span>
+							</div>
+							<div class="media-body">
+								<h3 class="heading">Register Complaint</h3>
+								<p>Did witness something illegal? Easily register a complaint on this portal.</p>
+								<a href="/report/newuser" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
+							</div>
+						</div>      
+					</div>
+					<div class="col-md-4 d-flex align-self-stretch px-4 xbribe-animate m-md-0 my-5">
+						<div class="d-block services text-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span><img src="images/m2.png"></span>
+							</div>
+							<div class="media-body">
+								<h3 class="heading">Track Complaint</h3>
+								<p>Filed a complaint before? Track the status of the previous complaints.</p>
+								<a href="/status" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
+							</div>
+						</div>    
+					</div>
+					<div class="col-md-4 d-flex align-self-stretch px-4 xbribe-animate m-md-0 mt-5">
+						<div class="d-block services text-center">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span><img src="images/m3.png"></span>
+							</div>
+							<div class="media-body">
+								<h3 class="heading">Send Reminder</h3>
+								<p>Filed a complaint before and it didn't resolve? Send us a reminder to notify us to immediately look into the case.</p>
+								<a href="/remind" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-chevron-right"></span><i class="sr-only">Read more</i></a>
+							</div>
+						</div>      
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <section class="xbribe-section xbribe-no-pt xbribe-no-pb">
-    	<div class="container">
+		<section class="xbribe-section xbribe-no-pt xbribe-no-pb">
+			<div class="container">
 				<div class="heading-section pt-5 pb-4 mt-4 xbribe-animate text-center">
 					<h2 class="mb-0">Why Report?</h2>
 				</div>
-    		<div class="row d-flex no-gutters">
+				<div class="row d-flex no-gutters">
 					
-    			<div class="col-md-5 d-flex xbribe-animate">
-    				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/about-1.jpg);">
-    				</div>
-    			</div>
-    			<div class="col-md-7 pl-md-5 py-md-5">
-    				<div class="row">
-	    				<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Complete Anonymity</h4>
-	    						<p>None of your personal details except email id will be shared with the authorities.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-bell"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Progress updates</h4>
-	    						<p>Timely progress reports will be sent on your email as well as android app.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-tasks"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>Quick Action</h4>
-	    						<p>It is made sure that report is verified and an action is taken as quickly as possible.</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
-	    					<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-shield"></span></div>
-	    					<div class="text pl-3">
-	    						<h4>A safer administration</h4>
-	    						<p>Help create a safer and more transparent government administration.</p>
-	    					</div>
-	    				</div>
-	    			</div>
-	        </div>
-        </div>
-    	</div>
-    </section>
+					<div class="col-md-5 d-flex xbribe-animate">
+						<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/about-1.jpg);">
+						</div>
+					</div>
+					<div class="col-md-7 pl-md-5 py-md-5">
+						<div class="row">
+							<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+								<div class="text pl-3">
+									<h4>Complete Anonymity</h4>
+									<p>None of your personal details except email id will be shared with the authorities.</p>
+								</div>
+							</div>
+							<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-bell"></span></div>
+								<div class="text pl-3">
+									<h4>Progress updates</h4>
+									<p>Timely progress reports will be sent on your email as well as android app.</p>
+								</div>
+							</div>
+							<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-tasks"></span></div>
+								<div class="text pl-3">
+									<h4>Quick Action</h4>
+									<p>It is made sure that report is verified and an action is taken as quickly as possible.</p>
+								</div>
+							</div>
+							<div class="col-md-6 services-2 w-100 d-flex xbribe-animate">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-shield"></span></div>
+								<div class="text pl-3">
+									<h4>A safer administration</h4>
+									<p>Help create a safer and more transparent government administration.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <section class="xbribe-counter" id="section-counter">
-    	<div class="container">
+		<section class="xbribe-counter" id="section-counter">
+			<div class="container">
 				<div class="row d-flex justify-content-center">
-          <div class="col-md-3 col-lg-3- d-flex justify-content-center counter-wrap xbribe-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="<%= count.received %>">0</strong>
-              </div>
-              <div class="text">
-              	<span>Received Complaints</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-lg-3- d-flex justify-content-center counter-wrap xbribe-animate">
-            <div class="block-18 text-center">
-              <div class="text">
-                <strong class="number" data-number="<%= count.resolved %>">0</strong>
-              </div>
-              <div class="text">
-              	<span>Resolved Complaints</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-lg-3- d-flex justify-content-center counter-wrap xbribe-animate mb-0">
-            <div class="block-18 text-center mb-0">
-              <div class="text">
-                <strong class="number" data-number="<%= count.pending %>">0</strong>
-              </div>
-              <div class="text">
-              	<span>Pending Complaints</span>
-              </div>
-            </div>
-          </div>
-        </div>
-    	</div>
-    </section>
+					<div class="col-md-3 col-lg-3- d-flex justify-content-center counter-wrap xbribe-animate">
+						<div class="block-18 text-center">
+							<div class="text">
+								<strong class="number" data-number="<%= count.received %>">0</strong>
+							</div>
+							<div class="text">
+								<span>Received Complaints</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-lg-3- d-flex justify-content-center counter-wrap xbribe-animate">
+						<div class="block-18 text-center">
+							<div class="text">
+								<strong class="number" data-number="<%= count.resolved %>">0</strong>
+							</div>
+							<div class="text">
+								<span>Resolved Complaints</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-lg-3- d-flex justify-content-center counter-wrap xbribe-animate mb-0">
+						<div class="block-18 text-center mb-0">
+							<div class="text">
+								<strong class="number" data-number="<%= count.pending %>">0</strong>
+							</div>
+							<div class="text">
+								<span>Pending Complaints</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <section class="xbribe-section bg-light xbribe-faqs">
-    	<div class="container">
+		<section class="xbribe-section bg-light xbribe-faqs">
+			<div class="container">
 
 				<div class="heading-section xbribe-animate mb-5 mt-5 mt-lg-0 text-center">
 					<h2 class="mb-3">Recently Registered Complaints</h2>
@@ -271,136 +271,136 @@
 					</div>
 				</div>
 
-    	</div>
-    </section>
+			</div>
+		</section>
 	
 		<section class="xbribe-section">
 			<div class="container">
 				<div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center xbribe-animate">
-            <h2>Gallery</h2>
-          </div>
-        </div>
+					<div class="col-md-7 heading-section text-center xbribe-animate">
+						<h2>Gallery</h2>
+					</div>
+				</div>
 				<div class="row">
-          <div class="col-md-4 xbribe-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-1.jpg);">
-            	<a href="images/gallery-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            </div>
-          </div>
-          <div class="col-md-4 xbribe-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-2.jpg);">
-            	<a href="images/gallery-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            </div>
-          </div>
-          <div class="col-md-4 xbribe-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-3.jpg);">
-            	<a href="images/gallery-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            </div>
-          </div>
+					<div class="col-md-4 xbribe-animate">
+						<div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-1.jpg);">
+							<a href="images/gallery-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+								<span class="fa fa-expand"></span>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-4 xbribe-animate">
+						<div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-2.jpg);">
+							<a href="images/gallery-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+								<span class="fa fa-expand"></span>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-4 xbribe-animate">
+						<div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-3.jpg);">
+							<a href="images/gallery-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+								<span class="fa fa-expand"></span>
+							</a>
+						</div>
+					</div>
 
-          <div class="col-md-4 xbribe-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-4.jpg);">
-            	<a href="images/gallery-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            </div>
-          </div>
-          <div class="col-md-4 xbribe-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-5.jpg);">
-            	<a href="images/gallery-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            </div>
-          </div>
-          <div class="col-md-4 xbribe-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-1.jpg);">
-            	<a href="images/gallery-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            </div>
-          </div>
-        </div>
+					<div class="col-md-4 xbribe-animate">
+						<div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-4.jpg);">
+							<a href="images/gallery-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+								<span class="fa fa-expand"></span>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-4 xbribe-animate">
+						<div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-5.jpg);">
+							<a href="images/gallery-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+								<span class="fa fa-expand"></span>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-4 xbribe-animate">
+						<div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-1.jpg);">
+							<a href="images/gallery-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
+								<span class="fa fa-expand"></span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
 			
 		<section class="xbribe-appointment xbribe-section xbribe-no-pt xbribe-no-pb img bg-light" id="contact">
-    	<div class="container">
-    		<div class="row d-md-flex justify-content-center">
-    			<div class="col-md-12 col-lg-9 p-3 py-5 pl-lg-5 xbribe-animate">
-    				<div class="heading-section text-center mb-5">
-            	<h2>Send Feedback</h2>
-          	</div>
-    				<form method="post" class="appointment" action="/feedback">
-    					<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-			              <input type="text" name="name" class="form-control" placeholder="Your Name" required="true">
-			            </div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			              <input type="email" name="email" class="form-control" placeholder="Your email" required="true">
-			            </div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-			              <textarea name="message" cols="30" rows="7" class="form-control" placeholder="Message" required="true"></textarea>
-			            </div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-			              <input type="submit" value="Send Feedback" class="btn btn-primary py-3 px-4">
-			            </div>
-								</div>
-    					</div>
-	          </form>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-		
-    <footer class="footer">
 			<div class="container">
-        <p class="copyright text-center mb-0">
-          Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Xbribe
-        </p>
+				<div class="row d-md-flex justify-content-center">
+					<div class="col-md-12 col-lg-9 p-3 py-5 pl-lg-5 xbribe-animate">
+						<div class="heading-section text-center mb-5">
+							<h2>Send Feedback</h2>
+						</div>
+						<form method="post" class="appointment" action="/feedback">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" name="name" class="form-control" placeholder="Your Name" required="true">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="email" name="email" class="form-control" placeholder="Your email" required="true">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<textarea name="message" cols="30" rows="7" class="form-control" placeholder="Message" required="true"></textarea>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="submit" value="Send Feedback" class="btn btn-primary py-3 px-4">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<footer class="footer">
+			<div class="container">
+				<p class="copyright text-center mb-0">
+					Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Xbribe
+				</p>
 			</div>
 		</footer>    
-  
+	
 
-  <script src="js/jquery-3.2.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <!-- <script src="js/popper.min.js"></script> -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- <script src="js/jquery.easing.1.3.js"></script> -->
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<!-- <script src="js/popper.min.js"></script> -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- <script src="js/jquery.easing.1.3.js"></script> -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
 	<!-- <script src="js/scrollax.min.js"></script> -->
 	<script src="/js/Chart.bundle.min.js"></script>
 	<script src="/scripts/draw-public-chart.js"></script>
-  <script src="js/main.js"></script>
+	<script src="js/main.js"></script>
 	<!--chatbot script-->
-   <script type="text/javascript">
+	 <script type="text/javascript">
 		/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
 		(function(d, m){
-		  var kommunicateSettings = {"appId":"15bc8f763760e7de873b56c7b105feb9","popupWidget":true,"automaticChatOpenOnNavigation":true};
-		  var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
-		  s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
-		  var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
-		  window.kommunicate = m; m._globals = kommunicateSettings;
+			var kommunicateSettings = {"appId":"15bc8f763760e7de873b56c7b105feb9","popupWidget":true,"automaticChatOpenOnNavigation":true};
+			var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+			s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+			var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+			window.kommunicate = m; m._globals = kommunicateSettings;
 		})(document, window.kommunicate || {});
 	</script>
 
-    
-  </body>
+		
+	</body>
 </html>

@@ -24,10 +24,10 @@ InitiateMongoServer()
 
 // app.use(cors());
 app.use(cors({
-  allowedHeaders: ['sessionId', 'Content-Type'],
-  exposedHeaders: ['sessionId'],
-  credentials: true,
-  origin: ['http://localhost:3000', 'http://localhost:5000', 'https://xbribe-react.herokuapp.com'] // here goes Frontend IP
+	allowedHeaders: ['sessionId', 'Content-Type'],
+	exposedHeaders: ['sessionId'],
+	credentials: true,
+	origin: ['http://localhost:3000', 'http://localhost:5000', 'https://xbribe-react.herokuapp.com'] // here goes Frontend IP
 }))
 
 // display these files statically as they are
@@ -44,19 +44,19 @@ app.use(cookieParser(process.env.COOKIE_PARSER_SECRET))
 app.use(cookieEncrypter(process.env.COOKIE_ENCRYPTER_SECRET))
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: true
 }))
 app.use(flash())
 
 // middleware to add username in session and for flash messages
 app.use((req, res, next) => {
-  res.locals.success_message = req.flash('success_message')
-  res.locals.error_message = req.flash('error_message')
-  res.locals.error = req.flash('error')
-  res.locals.user = req.user || null
-  next()
+	res.locals.success_message = req.flash('success_message')
+	res.locals.error_message = req.flash('error_message')
+	res.locals.error = req.flash('error')
+	res.locals.user = req.user || null
+	next()
 })
 
 // use routes
@@ -69,5 +69,5 @@ app.use('/getMinistries', require('./routes/getMinistries'))
 app.use('/faker', require('./routes/faker'))
 
 app.listen(port, () => {
-  console.log(`Server up on port ${port}`)
+	console.log(`Server up on port ${port}`)
 })

@@ -12,25 +12,25 @@
 		<% } %>
 		<% if (pageNo===1 && totalPages>2) { %>
 			<li class="page-item"><a class="page-link" href="1">First</a></li>
-	    <li class="page-item active"><a class="page-link" href="<%= pageNo %>"><%= pageNo %></a></li>
+			<li class="page-item active"><a class="page-link" href="<%= pageNo %>"><%= pageNo %></a></li>
 			<li class="page-item"><a class="page-link" href="<%= pageNo+1 %>"><%= pageNo+1 %></a></li>
 			<li class="page-item"><a class="page-link" href="<%= pageNo+2 %>"><%= pageNo+2 %></a></li>
-    	<li class="page-item"><a class="page-link" href="<%= totalPages %>">Last</a></li>
+			<li class="page-item"><a class="page-link" href="<%= totalPages %>">Last</a></li>
 		<% } %>
 		<% if (pageNo>1 && totalPages>2 && pageNo !== totalPages) { %>
 			<li class="page-item"><a class="page-link" href="1">First</a></li>
 			<li class="page-item"><a class="page-link" href="<%= pageNo-1 %>"><%= pageNo-1 %></a></li>
-	    <li class="page-item active"><a class="page-link" href="<%= pageNo %>"><%= pageNo %></a></li>
+			<li class="page-item active"><a class="page-link" href="<%= pageNo %>"><%= pageNo %></a></li>
 			<li class="page-item"><a class="page-link" href="<%= pageNo+1 %>"><%= pageNo+1 %></a></li>
-    	<li class="page-item"><a class="page-link" href="<%= totalPages %>">Last</a></li>
+			<li class="page-item"><a class="page-link" href="<%= totalPages %>">Last</a></li>
 		<% } %>
 		<% if (totalPages>2 && pageNo === totalPages) { %>
 			<li class="page-item"><a class="page-link" href="1">First</a></li>
 			<li class="page-item"><a class="page-link" href="<%= pageNo-2 %>"><%= pageNo-2 %></a></li>
 			<li class="page-item"><a class="page-link" href="<%= pageNo-1 %>"><%= pageNo-1 %></a></li>
-	    <li class="page-item active"><a class="page-link" href="<%= pageNo %>"><%= pageNo %></a></li>
-    	<li class="page-item"><a class="page-link" href="<%= totalPages %>">Last</a></li>
+			<li class="page-item active"><a class="page-link" href="<%= pageNo %>"><%= pageNo %></a></li>
+			<li class="page-item"><a class="page-link" href="<%= totalPages %>">Last</a></li>
 		<% } %>
-  </ul>
+	</ul>
 
 <% } %>

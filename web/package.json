@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.22.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -15,13 +15,14 @@
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-validator": "^6.12.1",
+    "express-validator": "^6.12.2",
     "faker": "^5.5.3",
-    "firebase-admin": "^9.11.0",
+    "firebase-admin": "^9.12.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.3",
-    "nodemailer": "^6.6.3",
-    "pdfkit": "^0.12.1"
+    "mongoose": "^6.0.10",
+    "nodemailer": "^6.6.5",
+    "pdfkit": "^0.12.3",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {},
   "scripts": {
